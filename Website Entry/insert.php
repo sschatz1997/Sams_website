@@ -1,12 +1,13 @@
 <?php
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
-date_webault_timezone_set("America/New_York");
+date_default_timezone_set("America/New_York");
 
 class myDB extends SQLite3
 {
 		function __construct()
 		{
+			//$this->open('/var/www/html/BB.db');
 			$this->open('BB.db');
 		}
 }
@@ -34,14 +35,14 @@ function getID()
 $db1 = new myDB();
 $id = getID();
 $name = $_POST['name'];
-$scope = $_POST['scope'];
 $web = $_POST['website'];
+$scope = $_POST['scope'];
 
 $insert = $db1->prepare('INSERT INTO companiesBasic(id, name, website, scope) VALUES (?,?,?,?);');
 $insert->bindValue(1,$id, SQLITE3_INTEGER);
 $insert->bindValue(2,$name, SQLITE3_TEXT);
-$insert->bindValue(3,$term, SQLITE3_TEXT);
-$insert->bindValue(4,$web, SQLITE3_TEXT);
+$insert->bindValue(3,$web, SQLITE3_TEXT);
+$insert->bindValue(4,$scope, SQLITE3_TEXT);
 $insert->execute();
 //$insert->commit();
 header("location: bb.html")
