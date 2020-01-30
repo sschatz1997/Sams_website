@@ -16,7 +16,7 @@ def c1():
 	temp2 = temp1.decode('utf-8')
 	print(temp2)
 	db = mysql.connector.connect(
-		host="localhost", 
+		host="127.0.0.1",
 		passwd = temp2,
 		user="localUser1", 
 		database="main", 
