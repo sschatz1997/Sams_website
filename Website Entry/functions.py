@@ -14,6 +14,7 @@ def c1():
 
 	temp1 = base64.b64decode(coded)
 	temp2 = temp1.decode('utf-8')
+	print(temp2)
 	db = mysql.connector.connect(
 		host="localhost", 
 		passwd = temp2,
