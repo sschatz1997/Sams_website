@@ -13,9 +13,10 @@ def c1():
 	f.close()
 
 	temp1 = base64.b64decode(coded)
-	passwd = temp1.decode('utf-8')
+	
 	db = mysql.connector.connect(
 		host="localhost", 
+		passwd = temp1.decode('utf-8'),
 		user="localUser1", 
 		database="main", 
 		auth_plugin='mysql_native_password'
