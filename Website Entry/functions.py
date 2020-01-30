@@ -14,9 +14,13 @@ def c1():
 
 	temp1 = base64.b64decode(coded)
 	passwd = temp1.decode('utf-8')
-
-    db = mysql.connector.connect(host="localhost", user="localUser1", database="main", auth_plugin='mysql_native_password')
-    return db  
+	db = mysql.connector.connect(
+		host="localhost", 
+		user="localUser1", 
+		database="main", 
+		auth_plugin='mysql_native_password'
+	)
+	return db  
 
 def openSqlite():
 	conn = sqlite3.connect('BB.db')
