@@ -36,6 +36,14 @@ def closesqlite():
 	conn.close()
 
 # will open the db and go from each entry and enter them in mySQL
+# +---------+--------------+------+-----+---------+----------------+
+#| Field   | Type         | Null | Key | Default | Extra          |
+#+---------+--------------+------+-----+---------+----------------+
+#| id      | int          | NO   | PRI | NULL    | auto_increment |
+#| name    | varchar(500) | NO   |     | NULL    |                |
+#| website | varchar(500) | NO   |     | NULL    |                |
+#| scope   | varchar(500) | NO   |     | NULL    |                |
+#+---------+--------------+------+-----+---------+----------------+
 
 def transfer():
 	#@@@@@
