@@ -60,3 +60,15 @@ def getIPs(file1):
 	x = 0
 	size = len(t)
 	return t
+
+def logCreator():
+	db = c1()
+	cursor = db.cursor()
+	cursor.execute("""CREATE TABLE IF NOT EXISTS fromLogs(
+		id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		logFile VARCHAR(100) NOT NULL,
+		ipAddr VARCHAR(30) NOT NULL,
+		timeSubmitted 
+	);""")
+	db.commit()
+	db.close()
