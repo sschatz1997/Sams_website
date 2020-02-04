@@ -46,7 +46,7 @@ function getIP()
 				<i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="bb.html">Bug Bountiy Entry</a>
+				<a href="bb.php">Bug Bountiy Entry</a>
 			</div>
 		</div>
 		<?php if(htmlspecialchars($_SESSION["username"]) == "admin"){echo"<a href='home.php'>Dashboard</a>";}?>
