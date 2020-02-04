@@ -48,12 +48,12 @@ function getIP()
 } 
 
 
-function failed($time, $usr, $pwd)
+function failed($time, $username, $pwd)
 {
 	$db1 = new myDB();
 	$ip = getIP();
 	$prep = $db1->prepare("INSERT INTO failedLogins(username, pasword, time, ip) VALUES (?,?,?,?);");
-	$prep -> bindValue(1,$usr);
+	$prep -> bindValue(1,$username);
 	$prep -> bindValue(2,$pwd);
 	$prep -> bindValue(3,$time);
 	$prep -> bindValue(4,$ip);
@@ -62,18 +62,18 @@ function failed($time, $usr, $pwd)
 	
 }
 
-/*function failed2($usr)
+/*function failed2($username)
 {
     $ip = getIP();
 	$prep1 = $con->prepare("SELECT atempts FROM logginAttempts WHERE username = ?");
-	$prep1 -> bindParam(1,$usr,PDO::PARAM_STR,50);
+	$prep1 -> bindParam(1,$username,PDO::PARAM_STR,50);
 	$prep1 -> execute();
 	$attempts = $prep1->fetch(PDO::FETCH_BOTH);
 	if($attempts == false){
 		$attempts = 1;
 		//below checks if the user exists
 		$prep0 = $con->prepare("SELECT username FROM logginAttempts WHERE username = ?");
-		$prep0 -> bindParam(1,$usr,PDO::PARAM_STR,50);
+		$prep0 -> bindParam(1,$username,PDO::PARAM_STR,50);
 		$prep0 -> execute();
 		$userExist = $prep0->fetch(PDO::FETCH_BOTH);
 		if($userExist == false){
@@ -88,7 +88,7 @@ function failed($time, $usr, $pwd)
 		//update
 		$bans = 0;
 		$prep2 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
-		$prep2->bindParam(1,$usr,PDO::PARAM_STR,50);
+		$prep2->bindParam(1,$username,PDO::PARAM_STR,50);
 		$prep2->bindParam(2,$attempts,PDO::PARAM_INT);
         $prep2->bindParam(3,$bans,PDO::PARAM_INT);
         $prep2->bindParam(4,$ip,PDO::PARAM_STR,30);
@@ -96,7 +96,7 @@ function failed($time, $usr, $pwd)
 	}else{
 		//insert
 		$prep3 = $con->prepare("SELECT numOfBans FROM logginAttempts WHERE username = ?");
-		$prep3 -> bindParam(1,$usr,PDO::PARAM_STR,50);
+		$prep3 -> bindParam(1,$username,PDO::PARAM_STR,50);
 		$prep3 -> execute();
 		$bans = $prep3->fetch(PDO::FETCH_BOTH);
 		$bans = intval(array_pop($prep3));
@@ -104,7 +104,7 @@ function failed($time, $usr, $pwd)
 			$attempts = 0;
 			$bans = $bans + 1;
 			$prep4 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
-			$prep4->bindParam(1,$usr,PDO::PARAM_STR,50);
+			$prep4->bindParam(1,$username,PDO::PARAM_STR,50);
 			$prep4->bindParam(2,$attempts,PDO::PARAM_INT);
 			$prep4->bindParam(3,$bans,PDO::PARAM_INT);
             $prep4->bindParam(4,$ip,PDO::PARAM_STR,30);
@@ -113,7 +113,7 @@ function failed($time, $usr, $pwd)
             $attempts = 0;
 			$attempts = $attempts + 1;
 			$prep4 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
-			$prep4->bindParam(1,$usr,PDO::PARAM_STR,50);
+			$prep4->bindParam(1,$username,PDO::PARAM_STR,50);
 			$prep4->bindParam(2,$attempts,PDO::PARAM_INT);
             $prep4->bindParam(3,$bans,PDO::PARAM_INT);
             $prep4->bindParam(4,$ip,PDO::PARAM_STR,30);
@@ -123,7 +123,7 @@ function failed($time, $usr, $pwd)
 	
 }*/
 
-function failed3($usr)
+function failed3($username)
 {
     
  /* +-----------+-------------+------+-----+-------------------+-----------------------------------------------+
@@ -138,7 +138,7 @@ function failed3($usr)
     +-----------+-------------+------+-----+-------------------+-----------------------------------------------+ */
     $ip = getIP();
     $prep1 = $con->prepare("SELECT atempts FROM logginAttempts WHERE username = ?");
-	$prep1 -> bindParam(1,$usr,PDO::PARAM_STR,50);
+	$prep1 -> bindParam(1,$username,PDO::PARAM_STR,50);
     $prep1 -> execute();
     $attempts = $prep1->fetch(PDO::FETCH_BOTH);
     if(is_bool($attempts)){
@@ -146,7 +146,7 @@ function failed3($usr)
         $attempts = 1;
         $bans = 0;
         $prp0 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
-        $prp0->bindParam(1,$usr,PDO::PARAM_STR,50);
+        $prp0->bindParam(1,$username,PDO::PARAM_STR,50);
         $prp0->bindParam(2,$attempts,PDO::PARAM_INT);
         $prp0->bindParam(3,$bans,PDO::PARAM_INT);
         $prp0->bindParam(4,$ip,PDO::PARAM_STR,30);
@@ -157,7 +157,7 @@ function failed3($usr)
         $attempts += 1;
 
         $prep2 = $con->prepare("SELECT numOfBans FROM logginAttempts WHERE username = ?");
-    	$prep2->bindParam(1,$usr,PDO::PARAM_STR,50);
+    	$prep2->bindParam(1,$username,PDO::PARAM_STR,50);
         $prep2->execute();
         $bans = $prep2->fetch(PDO::FETCH_BOTH);
         $bans = intval($bans);
@@ -167,7 +167,7 @@ function failed3($usr)
             $bans += 1;
         }
         $prp1 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
-        $prp1->bindParam(1,$usr,PDO::PARAM_STR,50);
+        $prp1->bindParam(1,$username,PDO::PARAM_STR,50);
         $prp1->bindParam(2,$attempts,PDO::PARAM_INT);
         $prp1->bindParam(3,$bans,PDO::PARAM_INT);
         $prp1->bindParam(4,$ip,PDO::PARAM_STR,30);
@@ -254,7 +254,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     $ip = getIP();
                     $prep1 = $con->prepare("SELECT atempts FROM logginAttempts WHERE username = ?");
-                    $prep1 -> bindParam(1,$usr,PDO::PARAM_STR,50);
+                    $prep1 -> bindParam(1,$username,PDO::PARAM_STR,50);
                     $prep1 -> execute();
                     $attempts = $prep1->fetch(PDO::FETCH_BOTH);
                     if(is_bool($attempts)){
@@ -262,7 +262,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $attempts = 1;
                         $bans = 0;
                         $prp0 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
-                        $prp0->bindParam(1,$usr,PDO::PARAM_STR,50);
+                        $prp0->bindParam(1,$username,PDO::PARAM_STR,50);
                         $prp0->bindParam(2,$attempts,PDO::PARAM_INT);
                         $prp0->bindParam(3,$bans,PDO::PARAM_INT);
                         $prp0->bindParam(4,$ip,PDO::PARAM_STR,30);
@@ -273,7 +273,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $attempts += 1;
                 
                         $prep2 = $con->prepare("SELECT numOfBans FROM logginAttempts WHERE username = ?");
-                        $prep2->bindParam(1,$usr,PDO::PARAM_STR,50);
+                        $prep2->bindParam(1,$username,PDO::PARAM_STR,50);
                         $prep2->execute();
                         $bans = $prep2->fetch(PDO::FETCH_BOTH);
                         $bans = intval($bans);
@@ -283,7 +283,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $bans += 1;
                         }
                         $prp1 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
-                        $prp1->bindParam(1,$usr,PDO::PARAM_STR,50);
+                        $prp1->bindParam(1,$username,PDO::PARAM_STR,50);
                         $prp1->bindParam(2,$attempts,PDO::PARAM_INT);
                         $prp1->bindParam(3,$bans,PDO::PARAM_INT);
                         $prp1->bindParam(4,$ip,PDO::PARAM_STR,30);
