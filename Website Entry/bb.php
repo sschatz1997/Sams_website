@@ -25,10 +25,10 @@ if(isset($_POST["name"])){
 	$web = $_POST['website'];
 	$scope = $_POST['scope'];
 	$insert = $con->prepare('INSERT INTO companiesBasic(name, website, scope) VALUES (?,?,?)');
-//	$insert->bindValue(1,$id, PDO::PARAM_INT);
-	$insert->bindValue(1,$name, PDO::PARAM_STR,500);
-	$insert->bindValue(2,$web, PDO::PARAM_STR,500);
-	$insert->bindValue(3,$scope, PDO::PARAM_STR,500);
+//	$insert->bindParam(1,$id, PDO::PARAM_INT);
+	$insert->bindParam(1,$name, PDO::PARAM_STR,500);
+	$insert->bindParam(2,$web, PDO::PARAM_STR,500);
+	$insert->bindParam(3,$scope, PDO::PARAM_STR,500);
 	$insert->execute();
 }else{
 	//echo "an error has occured!<br>";
