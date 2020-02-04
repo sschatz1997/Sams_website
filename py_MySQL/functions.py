@@ -33,7 +33,7 @@ def c1():
 def showTables():
 	db = c1()
 	cursor = db.cursor()
-	cursor.execute("show tables;");
+	cursor.execute("show tables;")
 	c = cursor.fetchall()
 	return c
 
