@@ -19,11 +19,11 @@ require_once "config.php";
 }*/
 
 //$id = getID();
-$name = $_POST['name'];
-$web = $_POST['website'];
-$scope = $_POST['scope'];
 
 if(isset($_POST["name"])){
+	$name = $_POST['name'];
+	$web = $_POST['website'];
+	$scope = $_POST['scope'];
 	$insert = $con->prepare('INSERT INTO companiesBasic(name, website, scope) VALUES (?,?,?);');
 //	$insert->bindValue(1,$id, PDO::PARAM_INT);
 	$insert->bindValue(1,$name, PDO::PARAM_STR,500);
