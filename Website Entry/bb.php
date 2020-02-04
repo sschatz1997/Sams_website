@@ -8,7 +8,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 require_once "config.php";
 
-function getID()
+/*function getID()
 {
 	$db1 = new myDB();
 	$result = $db1->query('SELECT id FROM companiesBasic order by id desc limit 1;');
@@ -16,19 +16,19 @@ function getID()
 	$results = $result->fetchArray();
 	$id = intval(array_pop($results));
 	return $id+1;
-}
+}*/
 
-$id = getID();
+//$id = getID();
 $name = $_POST['name'];
 $web = $_POST['website'];
 $scope = $_POST['scope'];
 
 if(isset($_POST["name"])){
-	$insert = $con->prepare('INSERT INTO companiesBasic(id, name, website, scope) VALUES (?,?,?,?);');
-	$insert->bindValue(1,$id, PDO::PARAM_INT);
-	$insert->bindValue(2,$name, PDO::PARAM_STR,500);
-	$insert->bindValue(3,$web, PDO::PARAM_STR,500);
-	$insert->bindValue(4,$scope, PDO::PARAM_STR,500);
+	$insert = $con->prepare('INSERT INTO companiesBasic(name, website, scope) VALUES (?,?,?);');
+//	$insert->bindValue(1,$id, PDO::PARAM_INT);
+	$insert->bindValue(1,$name, PDO::PARAM_STR,500);
+	$insert->bindValue(2,$web, PDO::PARAM_STR,500);
+	$insert->bindValue(3,$scope, PDO::PARAM_STR,500);
 	$insert->execute();
 }else{
 	echo "an error has occured!<br>";
