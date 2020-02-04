@@ -56,7 +56,7 @@ while($x < $entries){
     }else{
         $id = 0;
         $time1 = "N/A";
-        $ip = "N/A"
+        $ip = "N/A";
     }
 
 	
