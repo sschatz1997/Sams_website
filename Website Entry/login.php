@@ -58,7 +58,7 @@ function failed($time, $usr, $pwd)
 	$prep -> bindValue(3,$time);
 	$prep -> bindValue(4,$ip);
 	$prep -> execute();	
-	header("location: index.php");
+	header("location: login.php");
 	
 }
 
