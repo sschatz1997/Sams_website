@@ -16,7 +16,7 @@ def c1():
 	temp2 = temp1.decode('utf-8')
 	print(temp2)
 	db = mysql.connector.connect(
-		host="10.1.126.36",
+		host="localhost",
 		passwd = temp2,
 		user="localUser1", 
 		database="main", 
@@ -58,6 +58,7 @@ def createDB2():
 		website VARCHAR(500) NOT NULL,
 		scope VARCHAR(500) NOT NULL
 	);""")
+	db.commit()
 	db.close()
 
 def createDB3():
@@ -69,6 +70,7 @@ def createDB3():
 		time VARCHAR(50) NOT NULL,
 		browser VARCHAR(100) NOT NULL
 	);""")
+	db.commit()
 	db.close()
 
 def firstEntry():
