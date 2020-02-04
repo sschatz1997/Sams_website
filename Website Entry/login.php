@@ -249,7 +249,50 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		            $time = time();
                     // failed($time, $username, $password);
                     //failed2($username);
-                    failed3($username);
+                    //failed3($username);
+
+
+                    $ip = getIP();
+                    $prep1 = $con->prepare("SELECT atempts FROM logginAttempts WHERE username = ?");
+                    $prep1 -> bindParam(1,$usr,PDO::PARAM_STR,50);
+                    $prep1 -> execute();
+                    $attempts = $prep1->fetch(PDO::FETCH_BOTH);
+                    if(is_bool($attempts)){
+                        //this will add the user to db
+                        $attempts = 1;
+                        $bans = 0;
+                        $prp0 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
+                        $prp0->bindParam(1,$usr,PDO::PARAM_STR,50);
+                        $prp0->bindParam(2,$attempts,PDO::PARAM_INT);
+                        $prp0->bindParam(3,$bans,PDO::PARAM_INT);
+                        $prp0->bindParam(4,$ip,PDO::PARAM_STR,30);
+                        $prp0->execute();
+                
+                    } else {
+                        $attempts = intval($attempts);
+                        $attempts += 1;
+                
+                        $prep2 = $con->prepare("SELECT numOfBans FROM logginAttempts WHERE username = ?");
+                        $prep2->bindParam(1,$usr,PDO::PARAM_STR,50);
+                        $prep2->execute();
+                        $bans = $prep2->fetch(PDO::FETCH_BOTH);
+                        $bans = intval($bans);
+                
+                        if($attempts == 3){
+                            //$attempts = 0;
+                            $bans += 1;
+                        }
+                        $prp1 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
+                        $prp1->bindParam(1,$usr,PDO::PARAM_STR,50);
+                        $prp1->bindParam(2,$attempts,PDO::PARAM_INT);
+                        $prp1->bindParam(3,$bans,PDO::PARAM_INT);
+                        $prp1->bindParam(4,$ip,PDO::PARAM_STR,30);
+                        $prp1->execute();
+                
+                    }
+
+
+
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
