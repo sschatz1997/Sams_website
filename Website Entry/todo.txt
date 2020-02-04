@@ -7,6 +7,7 @@
 7. get mysql local working on py3
 8. make log tables for the drop down.
 9. add ignore IP's
-10. pip install python3-nmap
+10. pip install python3-nmap (nmap install for python)
 11. install WAF
+12. pip install tensorflow (tensorflow for python)
 ;)
