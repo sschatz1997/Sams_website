@@ -53,7 +53,7 @@ def createDB2():
 	db = c1()
 	cursor = db.cursor()
 	cursor.execute("""CREATE TABLE IF NOT EXISTS companiesBasic(
-		id INTEGER NOT NULL PRIMARY KEY,
+		id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 		name VARCHAR(500) NOT NULL,
 		website VARCHAR(500) NOT NULL,
 		scope VARCHAR(500) NOT NULL
