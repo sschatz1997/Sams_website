@@ -1,8 +1,9 @@
 1. add the user table to dasshboard DONE
-2. move both forms from sqlite to mysql
+2. move both forms from sqlite to mysql 1/2
 3. transfer both DBs already entered stuff to mysql from sqlite DONE
-4. look into greping ip's from logs to dashboard
+4. look into greping ip's from logs to dashboard in progress
 5. look into graphs okay to use JS
 6. look into having it be done using splunk or something like that.
 7. get mysql local working on py3
+8. make log tables for the drop down.
 ;)
