@@ -47,7 +47,7 @@ while($x < $entries){
     
     $prep5->bindParam(1,$id,PDO::PARAM_INT);
     $prep5->execute();
-    $ip = $prep5>fetch(PDO::FETCH_BOTH);
+    $ip = $prep5->fetch(PDO::FETCH_BOTH);
     $ip = array_pop($ip);
 	
 	echo"<tr>";

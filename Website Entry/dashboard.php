@@ -60,7 +60,7 @@ function getIP()
 		</div>
     </div>
     <div class="wrapper">
-		<div id="center"><!--change to left later-->
+		<div id="left"><!--change to left later-->
 			<table>
                 <tr>
 					<th>Users</th>
@@ -68,7 +68,7 @@ function getIP()
                     <th>Last Log-in</th>
                     <th>IP address</th>
                 </tr>
-                <?php require_once "curentUsers.php";?>
+		<?php require_once "curentUsers.php";?>
             </table>
         </div>
 
