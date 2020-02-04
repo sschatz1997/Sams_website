@@ -60,7 +60,6 @@ def getIPs(file1):
 	x = 0
 	size = len(t)
 	return t
-
 def logCreator():
 	db = c1()
 	cursor = db.cursor()
@@ -70,6 +69,18 @@ def logCreator():
 		ipAddr VARCHAR(30) NOT NULL,
 		timeSubmitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 		dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+	);""")
+	db.commit()
+	db.close()
+
+def secPlusMySQL():
+	db = c1()
+	cursor = db.cursor()
+	cursor.execute("""CREATE TABLE IF NOT EXISTS secPlusDefs(
+		id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		chapter INTEGER NOT NULL,
+		term VARCHAR(100) NOT NULL,
+                def VARCHAR(500) NOT NULL
 	);""")
 	db.commit()
 	db.close()

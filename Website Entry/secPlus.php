@@ -9,30 +9,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 require_once "config.php";
 
-/*function getID()
-{
-	$db1 = new myDB();
-	$result = $db1->query('SELECT id FROM companiesBasic order by id desc limit 1;');
-	//$result->execute();
-	$results = $result->fetchArray();
-	$id = intval(array_pop($results));
-	return $id+1;
-}*/
-
-//$id = getID();
-
-if(isset($_POST["name"])){
-	$name = $_POST['name'];
-	$web = $_POST['website'];
-	$scope = $_POST['scope'];
-	$insert = $con->prepare('INSERT INTO companiesBasic(name, website, scope) VALUES (?,?,?)');
-//	$insert->bindParam(1,$id, PDO::PARAM_INT);
-	$insert->bindParam(1,$name, PDO::PARAM_STR,500);
-	$insert->bindParam(2,$web, PDO::PARAM_STR,500);
-	$insert->bindParam(3,$scope, PDO::PARAM_STR,500);
+if(isset($_POST["chap"])){
+	$chap = $_POST['chap'];
+	$term = $_POST['term'];
+	$scope = $_POST['def'];
+	$insert = $con->prepare('INSERT INTO secPlusDefs(chapter, term, def) VALUES (?,?,?)');
+	$insert->bindParam(1,$chap, PDO::PARAM_INT);
+	$insert->bindParam(2,$term, PDO::PARAM_STR,100);
+	$insert->bindParam(3,$def, PDO::PARAM_STR,500);
 	$insert->execute();
-}else{
-	//echo "an error has occured!<br>";
 }
 ?>
 
@@ -40,9 +25,9 @@ if(isset($_POST["name"])){
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bug Bounty Insert Page</title>
+	<title>Sec+ Defs Entry</title>
 	<hr>
-	<center><h1><strong>Bug Bounty Insert Page</center></h1></center>
+	<!--<center><h1><strong>Bug Bounty Insert Page</center></h1></center>-->
 	<link rel="stylesheet" href="landingPage1.css">
 	<link rel="stylesheet" href="dropdown.css">
 	<link rel="stylesheet" href="main.css">
@@ -72,21 +57,19 @@ if(isset($_POST["name"])){
 		</div>
 	</div>
 	<div class="page-header">
-		<center>Bug Bounty Entry</center>
-		<center><h1>ONLY ENETER COMPANIES WITH FULL SAFE HARBOR!!!!</h1></center>
-		<center><h1>ONLY ENETER COMPANIES WITH MONEY REWARDS!!!!</h1></center>
+		<center>Sec+ Defs Entry</center>
 	</div>	
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
 		<center><table style="width 100%">
 			<tr>
-				<th>Enter the company name</th>
-				<th>Enter the company website</th>
-				<th>Enter the scope, with ; between the different sites</th>
+				<th>Enter the Chapter Number.</th>
+				<th>Enter the Term.</th>
+				<th>Enter the Definition.</th>
 			</tr>
 			<tr>		
-				<th><input type="text" name="name" id="size1" placeholder="?"><br></th>
-				<th><input type="text" name="website" id="size2" placeholder="?"><br></th>
-				<th><input type="text" name="scope" id="size3" placeholder="?"><br></th>
+				<th><input type="number" name="chap" id="size1" placeholder="?"><br></th>
+				<th><input type="text" name="term" id="size2" placeholder="?"><br></th>
+				<th><input type="text" name="def" id="size3" placeholder="?"><br></th>
 			</tr>
 		</table></center>
 		<center><input type="submit" value="submit"></center> 
