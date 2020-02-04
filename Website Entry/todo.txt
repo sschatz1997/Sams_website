@@ -6,4 +6,6 @@
 6. look into having it be done using splunk or something like that.
 7. get mysql local working on py3
 8. make log tables for the drop down.
+9. add ignore IP's
+10. pip install python3-nmap
 ;)
