@@ -246,9 +246,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 } else{
                     // Display an error message if username doesn't exist
                     $username_err = "Login Failed";
-		    $time = time();
-           // failed($time, $username, $password);
-            //failed2($username);
+		            $time = time();
+                    // failed($time, $username, $password);
+                    //failed2($username);
+                    failed3($username);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
