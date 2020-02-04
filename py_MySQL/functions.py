@@ -45,6 +45,16 @@ def closesqlite():
 #| scope   | varchar(500) | NO   |     | NULL    |                |
 #+---------+--------------+------+-----+---------+----------------+
 
+def getFirstID():
+	db = c1()
+	c = db.cursor()
+	c.execute("SELECT COUNT(*) FROM defs;")
+	t0 = c.fetchall()
+	t1 = str(t0.pop())
+	t2 = t1.strip("([','])")
+	count = int(t2)
+	return count 
+
 def transfer():
 	#@@@@@
 
