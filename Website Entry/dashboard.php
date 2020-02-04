@@ -80,7 +80,7 @@ function getIP()
                 </tr>
 	        	<?php require_once "failedUsers.php";?>
             </table>
-        </div>-
+        </div>
 
 
 
