@@ -1,0 +1,7 @@
+1. add the user table to dasshboard
+2. move both forms from sqlite to mysql
+3. transfer both DBs already entered stuff to mysql from sqlite
+4. look into greping ip's from logs to dashboard
+5. look into graphs okay to use JS
+6. look into having it be done using splunk or something like that.
+;)
