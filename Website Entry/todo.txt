@@ -8,4 +8,5 @@
 8. make log tables for the drop down.
 9. add ignore IP's
 10. pip install python3-nmap
+11. install WAF
 ;)
