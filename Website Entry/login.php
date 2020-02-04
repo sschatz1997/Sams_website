@@ -110,6 +110,7 @@ function failed2($usr)
             $prep4->bindParam(4,$ip,PDO::PARAM_STR,30);
 			$prep4->execute();
 		}else{
+            $attempts = 0;
 			$attempts = $attempts + 1;
 			$prep4 = $con->prepare("INSERT INTO logginAttempts(username, atempts, numOfBans, ip) VALUES (?,?,?,?);");
 			$prep4->bindParam(1,$usr,PDO::PARAM_STR,50);
