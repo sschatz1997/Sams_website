@@ -1,0 +1,95 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 10px;
+	grid-auto-rows: minmax(100px, auto);
+}
+.grid-container {
+	display: grid;
+	grid-template-areas: 
+		'header header header header header header' 
+		'left left middle middle right right'
+		'left1 left1 middle1 middle1 right1 right1' 
+		'footer footer footer footer footer footer';
+	grid-column-gap: 10px; 
+} 
+/*.table1 {
+	border-width: 5px;
+	border-style: solid;
+	border-color: white;
+	grid-column: 3/4;
+	grid-row: 2/4;
+}
+
+.runP {
+	border-width: 5px;
+	border-style: solid;
+	border-color: white;
+	grid-area:left
+}*/
+
+.left,
+.middle,
+.right {
+  padding: 10px;
+}
+/* Style the left column */
+.left {
+  grid-area: left;
+  width: auto;
+}
+
+.left1 {
+  grid-area: left;
+  width: auto;
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+.middle1 {
+  grid-area: middle;
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+}
+
+.right1 {
+  grid-area: right;
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+}
+
+/* Style the footer */
+.footer {
+  grid-area: footer;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+	.grid-container  {
+		grid-template-areas: 
+			'header header header header header header' 
+			'left left left left left left' 
+			'left1 left1 left1 left1 left1 left1' 
+			'middle middle middle middle middle middle' 
+			'middle1 middle1 middle1 middle1 middle1 middle1' 
+			'right right right right right right' 
+			'right1 right1 right1 right1 right1 right1' 
+			'footer footer footer footer footer footer';
+	}
+}

@@ -1,0 +1,38 @@
+#group1{
+	position: absolute;
+	float: left;
+	border-style: solid;
+	border-width: 5px;
+	height: 400px;
+	width: 300px;
+	text-align: center;
+}
+
+#group2{
+	width: 800px;
+	margin-left: 350px;
+	border-style: solid;
+	border-width: 5px;
+	height: 400px;
+	text-align: center;
+}
+
+#logout{   
+	width:250px; 
+	margin:0 auto;
+	padding: 45 px;
+	text-align: center;
+
+}
+
+body {
+  background-color: #101010;
+  color: #ffffff;
+}
+
+h1 {
+  color: #ffffff;
+}
+p1 {
+  color: #ffffff;
+}
