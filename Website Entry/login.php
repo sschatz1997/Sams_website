@@ -98,7 +98,7 @@ function failed2($usr)
 		$prep3 -> execute();
 		$bans = $prep3->fetch(PDO::FETCH_BOTH);
 		$bans = intval(array_pop($prep3));
-		if($attempts == 3 || $attempts + 1 = 3){
+		if($attempts == 3){ //|| $attempts + 1 = 3){
 			$attempts = 0;
 			$bans = $bans + 1;
 			$prep4 = $con->prepare("INSERT INTO loginAttempts(username, atempts, numOfBans) VALUES (?,?,?);");
