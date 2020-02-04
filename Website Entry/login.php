@@ -20,7 +20,7 @@ class myDB extends SQLite3
 {
 		function __construct()
 		{
-            $this->open('/home/sam/testing/temp.db');
+            $this->open('temp.db');
             //needs to change
 		}
 }
