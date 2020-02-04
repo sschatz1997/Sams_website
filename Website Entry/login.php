@@ -4,7 +4,7 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: index.php");
+    header("location: home.php");
     exit;
 }
  
@@ -176,7 +176,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Redirect user to welcome page
 			    //require_once "loginT.php";
 			    $s2->execute();
-                            header("location: index.php");
+                            header("location: home.php");
                         } else{
                             // Display an error message if password is not valid
 
