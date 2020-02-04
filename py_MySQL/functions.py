@@ -15,7 +15,6 @@ def c1():
 
 	temp1 = base64.b64decode(coded)
 	temp2 = temp1.decode('utf-8')
-	print(temp2)
 	db = mysql.connector.connect(
 		host="localhost",
 		passwd = temp2,
@@ -44,21 +43,62 @@ def closesqlite():
 #| website | varchar(500) | NO   |     | NULL    |                |
 #| scope   | varchar(500) | NO   |     | NULL    |                |
 #+---------+--------------+------+-----+---------+----------------+
+def getID():
+	db = openSqlite()
+	c = db.cursor()
+	c.execute("SELECT id FROM companiesBasic WHERE id > 0;")
+	t0 = c.fetchall()
+	t1 = str(t0.pop())
+	t2 = t1.strip("([','])")
+	id1 = int(t2)
+	return id1 
+
+def getName(id1):
+	db = openSqlite()
+	c = db.cursor()
+	c.execute("SELECT name FROM companiesBasic WHERE id = (?);", (id1,))
+	t0 = c.fetchall()
+	t1 = str(t0.pop())
+	name = t1.strip("([','])")
+	return name
+
+def getWebsite(id1):
+	db = openSqlite()
+	c = db.cursor()
+	c.execute("SELECT website FROM companiesBasic WHERE id = (?);", (id1,))
+	t0 = c.fetchall()
+	t1 = str(t0.pop())
+	website = t1.strip("([','])")
+	return website 
+
+def getScope(id1):
+	db = openSqlite()
+	c = db.cursor()
+	c.execute("SELECT scope FROM companiesBasic WHERE id = (?);", (id1,))
+	t0 = c.fetchall()
+	t1 = str(t0.pop())
+	scope = t1.strip("([','])")
+	return scope
+				
+def insert(name, web, sc):
+	db = c1()
+	cursor = db.cursor()
+	statement = "INSERT INTO companiesBasic(name, website, scope) VALUES(%s,%s,%s);"
+	tup = (name, web, sc)
+	cursor.execute(statement, tup)
+	db.commit()
+	db.close()
+	print("Entered: ", tup)
 
 def getFirstID():
-	db = c1()
+	db = openSqlite()
 	c = db.cursor()
-	c.execute("SELECT COUNT(*) FROM defs;")
+	c.execute("SELECT COUNT(*) FROM companiesBasic;")
 	t0 = c.fetchall()
 	t1 = str(t0.pop())
 	t2 = t1.strip("([','])")
 	count = int(t2)
 	return count 
-
-def transfer():
-	#@@@@@
-
-
 
 # testing
 def test():
