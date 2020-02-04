@@ -59,7 +59,18 @@ def createDB2():
 		scope VARCHAR(500) NOT NULL
 	);""")
 	db.close()
-	
+
+def createDB3():
+	db = c1()
+	cursor = db.cursor()
+	cursor.execute("""CREATE TABLE IF NOT EXISTS log(
+		id INTEGER NOT NULL PRIMARY KEY,
+		ip VARCHAR(40) NOT NULL,
+		time VARCHAR(50) NOT NULL,
+		browser VARCHAR(100) NOT NULL
+	);""")
+	db.close()
+
 def firstEntry():
 	conn = openSqlite()
 	T = conn.cursor()
@@ -70,3 +81,7 @@ def firstEntry():
 	T.execute("INSERT INTO companiesBasic(id, name, website, scope) VALUES (?,?,?,?);", (id, chapter, term, defi,))
 	conn.commit()
 	closeSqlite()
+
+def loging():
+	conn = openSqlite()
+	T = conn.cursor()
