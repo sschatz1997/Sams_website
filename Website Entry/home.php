@@ -39,8 +39,16 @@ function getIP()
 	<?php setcookie("gotyounow",$_SESSION["username"]);?>
 	<hr>
 	<div class="navbar">
-	<a href="/index.php">Home</a>
-	<a href="index.php">Profile</a>
+	<a href="home.php">Home</a>
+	<a href="home.php">Profile</a>
+	<div class="dropdown">
+		<button class="dropbtn">Study forms
+			<i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-content">
+			<a href="bb.html">Bug Bountiy Entry</a>
+		</div>
+	</div>
 	<?php if(htmlspecialchars($_SESSION["username"]) == "admin"){echo"<a href='index.php'>Dashboard</a>";}?>
 	<div class="1">
 		<form action="logout.php" method="POST">
