@@ -52,7 +52,7 @@ function failed($time, $usr, $pwd)
 {
 	$db1 = new myDB();
 	$ip = getIP();
-	$prep = $db1->prepare("INSERT INTO failedLogins(username, password, time, ip) VALUES (?,?,?,?);");
+	$prep = $db1->prepare("INSERT INTO failedLogins(username, pasword, time, ip) VALUES (?,?,?,?);");
 	$prep -> bindValue(1,$usr);
 	$prep -> bindValue(2,$pwd);
 	$prep -> bindValue(3,$time);
