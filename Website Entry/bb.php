@@ -62,7 +62,7 @@ if(isset($_POST["name"])){
 				<a href="bb.php">Bug Bounty Entry</a>
 			</div>
 		</div>
-		<?php if(htmlspecialchars($_SESSION["username"]) == "admin"){echo"<a href='home.php'>Dashboard</a>";}?>
+		<?php if(htmlspecialchars($_SESSION["username"]) == "admin"){echo"<a href='dashboard.php'>Dashboard</a>";}?>
 		<div class="1">
 			<form action="logout.php" method="POST">
 				<center><input type="submit" value="logout" name="logout"></span></center>
