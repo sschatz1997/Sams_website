@@ -71,7 +71,7 @@ function getIP()
 	        	<?php require_once "curentUsers.php";?>
             </table>
         </div>
-		<div id="right"><!--change to left later-->
+		<div id="center"><!--change to left later-->
 			<table>
                 <tr>
 					<th>Username</th>
@@ -79,6 +79,15 @@ function getIP()
                     <th>IP address</th>
                 </tr>
 	        	<?php require_once "failedUsers.php";?>
+            </table>
+        </div>
+		<div id="right"><!--change to left later-->
+			<table>
+                <tr>
+					<th>Date/time</th>
+                    <th>IP address</th>
+                </tr>
+	        	
             </table>
         </div>
 
