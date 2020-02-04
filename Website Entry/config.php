@@ -8,6 +8,11 @@ $HOSTNAME = "localhost";
 //$PORT = 3306;
 $USERNAME = "localUser1";
 $DATABASE = "main";
+
+define('DB_SERVER', $HOSTNAME);
+define('DB_USERNAME', $USERNAME);
+define('DB_PASSWORD', $PASSWORD);
+
 try {
     $con = new PDO("mysql:host=$HOSTNAME;port=3306;dbname=$DATABASE", $USERNAME, $PASSWORD);
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
