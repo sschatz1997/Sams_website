@@ -63,7 +63,7 @@ while($x < $entries){
 	echo"<tr>";
 	echo "<th>".$un."</th>";
 	echo "<th>".$date."</th>";
-    echo "<th>".$time1."</th>";
+   // echo "<th>".$time1."</th>";
     echo "<th>".$ip."</th>";
 	echo"</tr>";
 	$x++;
