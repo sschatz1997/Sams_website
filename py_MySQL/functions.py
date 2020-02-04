@@ -68,7 +68,8 @@ def logCreator():
 		id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		logFile VARCHAR(100) NOT NULL,
 		ipAddr VARCHAR(30) NOT NULL,
-		timeSubmitted 
+		timeSubmitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+		dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
 	);""")
 	db.commit()
 	db.close()
