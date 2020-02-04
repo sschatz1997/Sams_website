@@ -33,22 +33,32 @@ while($x < $entries){
 	$prep2->bindParam(1,$un,PDO::PARAM_STR, 50);
 	$prep2->execute();
 	$date1 = $prep2->fetch(PDO::FETCH_BOTH);
-	$date = array_pop($date1);
-	
+    if(gettype($date1) != "boolean"){
+        $date = array_pop($date1);
+    }else{
+        $date = "N/A";
+    }
+
 	$prep3->bindParam(1,$un,PDO::PARAM_STR, 50);
 	$prep3->execute();
 	$id = $prep3->fetch(PDO::FETCH_BOTH);
-	$id = intval(array_pop($id));
+    if(gettype($id) != "boolean"){
+        $id = intval(array_pop($id));
+        $prep4->bindParam(1,$id,PDO::PARAM_INT);
+        $prep4->execute();
+        $time1 = $prep4->fetch(PDO::FETCH_BOTH);
+        $time1 = array_pop($time1);
+        
+        $prep5->bindParam(1,$id,PDO::PARAM_INT);
+        $prep5->execute();
+        $ip = $prep5->fetch(PDO::FETCH_BOTH);
+        $ip = array_pop($ip);
+    }else{
+        $id = 0;
+        $time1 = "N/A";
+        $ip = "N/A"
+    }
 
-	$prep4->bindParam(1,$id,PDO::PARAM_INT);
-	$prep4->execute();
-	$time1 = $prep4->fetch(PDO::FETCH_BOTH);
-    $time1 = array_pop($time1);
-    
-    $prep5->bindParam(1,$id,PDO::PARAM_INT);
-    $prep5->execute();
-    $ip = $prep5->fetch(PDO::FETCH_BOTH);
-    $ip = array_pop($ip);
 	
 	echo"<tr>";
 	echo "<th>".$un."</th>";
