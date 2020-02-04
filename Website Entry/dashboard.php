@@ -68,7 +68,17 @@ function getIP()
                     <th>Last Log-in</th>
                     <th>IP address</th>
                 </tr>
-		<?php require_once "curentUsers.php";?>
+	        	<?php require_once "curentUsers.php";?>
+            </table>
+        </div>
+		<div id="right"><!--change to left later-->
+			<table>
+                <tr>
+					<th>Username</th>
+					<th>Date last attempted</th>
+                    <th>IP address</th>
+                </tr>
+	        	<?php require_once "failedUsers.php";?>
             </table>
         </div>
 
