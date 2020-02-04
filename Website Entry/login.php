@@ -123,6 +123,17 @@ function failed2($usr)
 	
 }
 
+function failed3(usrname)
+{
+    $ip = getIP();
+    $prep1 = $con->prepare("SELECT atempts FROM logginAttempts WHERE username = ?");
+	$prep1 -> bindParam(1,$usr,PDO::PARAM_STR,50);
+    $prep1 -> execute();
+    $attempts = $prep1->fetch(PDO::FETCH_BOTH);
+    
+    
+}
+
 /* if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $ip = $_SERVER['HTTP_CLIENT_IP'];
 } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -193,7 +204,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username_err = "Login Failed";
 		    $time = time();
             failed($time, $username, $password);
-            failed2($username);
+            //failed2($username);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
