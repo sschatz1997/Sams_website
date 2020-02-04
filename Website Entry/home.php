@@ -29,9 +29,9 @@ function getIP()
 	<title>sams page</title>
 	<hr>
 	<center><h1><strong>sams site</center></h1></center>
-	<link="stylesheet" href="landingPage1.css">
-	<link="stylesheet" href="dropdown.css">
-	<link="stylesheet" href="main.css">
+	<link rel="stylesheet" href="landingPage1.css">
+	<link rel="stylesheet" href="dropdown.css">
+	<link rel="stylesheet" href="main.css">
 	<hr>
 </head>
 
