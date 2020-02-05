@@ -73,6 +73,15 @@ def logCreator():
 	);""")
 	db.commit()
 	db.close()
+#+---------+--------------+------+-----+---------+-------+
+#| Field   | Type         | Null | Key | Default | Extra |
+#+---------+--------------+------+-----+---------+-------+
+#| id      | int          | NO   | PRI | NULL    |       |
+#| ip      | varchar(40)  | NO   |     | NULL    |       |
+#| time    | varchar(50)  | NO   |     | NULL    |       |
+#| browser | varchar(100) | NO   |     | NULL    |       |
+#+---------+--------------+------+-----+---------+-------+
+
 
 def secPlusMySQL():
 	db = c1()
@@ -81,7 +90,7 @@ def secPlusMySQL():
 		id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		chapter INTEGER NOT NULL,
 		term VARCHAR(100) NOT NULL,
-                def VARCHAR(500) NOT NULL
+		def VARCHAR(500) NOT NULL
 	);""")
 	db.commit()
 	db.close()
