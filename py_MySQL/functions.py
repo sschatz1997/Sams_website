@@ -1,6 +1,7 @@
 import os
 import re
 import csv
+import nmap
 import random
 import base64
 import sqlite3
@@ -60,6 +61,7 @@ def getIPs(file1):
 	x = 0
 	size = len(t)
 	return t
+
 def logCreator():
 	db = c1()
 	cursor = db.cursor()
@@ -84,3 +86,12 @@ def secPlusMySQL():
 	);""")
 	db.commit()
 	db.close()
+
+def nmapScan(ip):
+    nm = nmap.PortScaner()
+    rand = nm.scan(ip, "1-444")
+    print("THIS WILL TAKE A WHILE")
+    p1 = "/home/sam/CSVnmap/"
+    ending = ".csv"
+    file1 = p1 + str(ip) + ending
+
