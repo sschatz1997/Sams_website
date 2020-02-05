@@ -73,14 +73,16 @@ def logCreator():
 	);""")
 	db.commit()
 	db.close()
-#+---------+--------------+------+-----+---------+-------+
-#| Field   | Type         | Null | Key | Default | Extra |
-#+---------+--------------+------+-----+---------+-------+
-#| id      | int          | NO   | PRI | NULL    |       |
-#| ip      | varchar(40)  | NO   |     | NULL    |       |
-#| time    | varchar(50)  | NO   |     | NULL    |       |
-#| browser | varchar(100) | NO   |     | NULL    |       |
-#+---------+--------------+------+-----+---------+-------+
+#+---------------+--------------+------+-----+-------------------+-------------------+
+#| Field         | Type         | Null | Key | Default           | Extra             |
+#+---------------+--------------+------+-----+-------------------+-------------------+
+#| id            | int          | NO   | PRI | NULL              | auto_increment    |
+#| logFile       | varchar(100) | NO   |     | NULL              |                   |
+#| ipAddr        | varchar(30)  | NO   |     | NULL              |                   |
+#| timeSubmitted | timestamp    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+#| dateSubmitted | datetime     | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+#+---------------+--------------+------+-----+-------------------+-------------------+
+
 
 
 def secPlusMySQL():
