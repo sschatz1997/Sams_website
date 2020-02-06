@@ -1,3 +1,4 @@
+import csv
 import base64
 import pprint
 import mysql.connector
@@ -73,3 +74,9 @@ def getFiles(ip):
     cursor.execute("SELECT logFile FROM fromLogs WHERE ipAddr = (%s);", (ip,))
     t2 = cursor.fetchall()
     pprint.pprint(t2)
+
+def toCSV(ips):
+    with open("/home/sam/Documents/ips.csv", 'wb') as f:
+        wr = csv.writer(f,delimiter=',')
+        wr.writerows(ips)
+    f.close()
