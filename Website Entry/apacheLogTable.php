@@ -47,7 +47,9 @@ function getIP()
 		<div class="dropdown">
 			<button class="dropbtn">IP Log Tables
 				<i class="fa fa-caret-down"></i>
-			</button>
+            </button>
+        </div>
+        <div class="dropdown">
 			<div class="dropdown-content">
 				<a href="ufwLogTable.php">UFW Table</a>
 				<a href="sysLogTable.php">Syslog Table</a>
