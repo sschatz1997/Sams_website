@@ -111,7 +111,7 @@ def toLogFile(list1,file1):
 		s(0.5)
 		x += 1
 
-def insert1(val, file):
+def insert1(val, file1):
 	db = c1()
 	cursor = db.cursor()
 	tup = (file1,val)
