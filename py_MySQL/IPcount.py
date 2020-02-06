@@ -1,3 +1,5 @@
+import base64
+import mysql.connector
 from time import sleep as s
 from functions import files, getLinesFromFile, getIPs, nmapScan, toLogFile
 
