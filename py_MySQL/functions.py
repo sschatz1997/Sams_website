@@ -98,10 +98,10 @@ def secPlusMySQL():
 	db.close()
 
 def nmapScan(ip):
-    #nm = nmap.PortScaner()
-    #rand = nm.scan(ip, "1-444")
+	#nm = nmap.PortScaner()
+	#rand = nm.scan(ip, "1-444")
 	print("THIS WILL TAKE A WHILE")
-    p1 = "/home/sam/CSVnmap/"
+	p1 = "/home/sam/CSVnmap/"
 	ending = ".csv"
 	file1 = p1 + str(ip) + ending
 
