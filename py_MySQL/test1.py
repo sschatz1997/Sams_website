@@ -20,7 +20,7 @@ while(x < len(files)):
 		d1['a'] = temp
 		t = []
 		t = list(d1['a'])
-		toLogFile(t,files[x])
+		toLogFile(t,str(files[x]))
 		print(d1['a'])
 	elif(x == 1):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
@@ -37,7 +37,7 @@ while(x < len(files)):
 		d1['c'] = temp
 		t = []
 		t = list(d1['c'])
-		toLogFile(t,temp)
+		toLogFile(t,str(files[x]))
 		print(d1['c'])
 	elif(x == 3):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
@@ -46,7 +46,7 @@ while(x < len(files)):
 		d1['d'] = temp
 		t = []
 		t = list(d1['d'])
-		toLogFile(t,temp)
+		toLogFile(t,str(files[x]))
 		print(d1['d'])
 	elif(x == 4):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
@@ -55,7 +55,7 @@ while(x < len(files)):
 		d1['e'] = temp
 		t = []
 		t = list(d1['e'])
-		toLogFile(t,temp)
+		toLogFile(t,str(files[x]))
 		print(d1['e'])
 	elif(x == 5):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
@@ -64,7 +64,7 @@ while(x < len(files)):
 		d1['f'] = temp
 		t = []
 		t = list(d1['f'])
-		toLogFile(t,temp)
+		toLogFile(t,str(files[x]))
 		print(d1['f'])
 
 	s(1)
