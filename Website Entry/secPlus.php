@@ -43,21 +43,22 @@ if(isset($_POST["chap"])){
 		<div class="dropdown">
 			<button class="dropbtn">IP Log Tables
 				<i class="fa fa-caret-down"></i>
-			</button>
+            </button>
 			<div class="dropdown-content">
 				<a href="ufwLogTable.php">UFW Table</a>
 				<a href="sysLogTable.php">Syslog Table</a>
 				<a href="apacheLogTable.php">Apache Table</a>
 				<a href="apacheErrorLogTable.php">Apache Error Table</a>
 				<a href="mysqlLogTable.php">MySql Table</a>
-				<a href="ftpLogTable.php">FTP Table</a>
+                <a href="ftpLogTable.php">FTP Table</a>
+            </div>
 		</div>
 		<div class="dropdown">
 			<button class="dropbtn">Study forms
 				<i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="bb.php">Bug Bounty Entry</a>
+				<a href="bb.php">Bug Bountiy Entry</a>
 				<a href="secPlus.php">Sec+ Defs Entry</a>
 			</div>
 		</div>
@@ -67,7 +68,7 @@ if(isset($_POST["chap"])){
 				<center><input type="submit" value="logout" name="logout"></span></center>
 			</form>
 		</div>
-	</div>
+    </div>
 	<div class="page-header">
 		<center>Sec+ Defs Entry</center>
 	</div>	
