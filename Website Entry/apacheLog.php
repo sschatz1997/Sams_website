@@ -1,7 +1,7 @@
 <?php
 require_once "config.php";
 $log = "/var/log/apache2/access.log";
-$prep0 = $con->query('SELECT id FROM fromLogs WHERE logFile = "/var/log/syslog";');
+$prep0 = $con->query('SELECT id FROM fromLogs WHERE logFile = "/var/log/apache2/access.log";');
 $prep0->execute();
 $count2 = $prep0->rowCount();
 $prep1 = $con->prepare('SELECT id from fromLogs WHERE logFile = ?;');
@@ -39,12 +39,13 @@ $id = intval(array_pop($entries));
 while($x < $count2){
 	$prep2->bindParam(1,$id,PDO::PARAM_INT);
 	$prep2->execute();
-	$ip = $prep2->fetch(PDO::FETCH_BOTH);
+	$ip = $prep2->fetch(PDO::FETCH_ASSOC);
+	//echo "type: " . gettype($ip) . "<br>";
 	$prep3->bindParam(1,$id,PDO::PARAM_INT);
 	$prep3->execute();
-	//$ip = array_pop($ip);
-	$date = $prep3->fetch(PDO::FETCH_BOTH);
-	//$date = array_pop($date);
+	$ip = array_pop($ip);
+	$date = $prep3->fetch(PDO::FETCH_ASSOC);
+	$date = array_pop($date);
 
 	
 	echo"<tr>";
