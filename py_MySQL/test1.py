@@ -1,4 +1,3 @@
-import pprint
 from time import sleep as s
 from functions import files, getLinesFromFile, getIPs, nmapScan
 
@@ -19,37 +18,37 @@ while(x < len(files)):
 		temp = []
 		temp = getIPs(files[x])
 		d1['a'] = temp
-		pprint(d1['a'])
+		print(d1['a'])
 	elif(x == 1):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
 		temp = []
 		temp = getIPs(files[x])
 		d1['b'] = temp
-		pprint(d1['b'])
+		print(d1['b'])
 	elif(x == 2):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
 		temp = []
 		temp = getIPs(files[x])
 		d1['c'] = temp
-		pprint(d1['c'])
+		print(d1['c'])
 	elif(x == 3):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
 		temp = []
 		temp = getIPs(files[x])
 		d1['d'] = temp
-		pprint(d1['d'])
+		print(d1['d'])
 	elif(x == 4):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
 		temp = []
 		temp = getIPs(files[x])
 		d1['e'] = temp
-		pprint(d1['e'])
+		print(d1['e'])
 	elif(x == 5):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
 		temp = []
 		temp = getIPs(files[x])
 		d1['f'] = temp
-		pprint(d1['f'])
+		print(d1['f'])
 
 	s(1)
 	x += 1
