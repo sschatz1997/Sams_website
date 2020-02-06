@@ -1,4 +1,5 @@
 import base64
+import pprint
 import mysql.connector
 from time import sleep as s
 from functions import files, getLinesFromFile, getIPs, nmapScan, toLogFile
@@ -43,7 +44,7 @@ def getAllIPs():
         temp2 = temp2.strip("[(',')]")
         finial.append(temp2)
         x += 1
-    #temp1 = unform.strip("[(',')]")
+   
     db.close()
     return finial
 
@@ -59,8 +60,16 @@ def getMultiples(list1):
         t2 = cursor.fetchall()
         if(len(t2) != 1):
             print("is a dup   ", t2)
+            getFiles(str(t1.pop()))
         else:
             print("single entry   ", t2)
 
         x += 1
 
+def getFiles(ip):
+    db = c1()
+    cursor = db.cursor()
+    ip = ip.strip("[(',')]")
+    cursor.execute("SELECT logFile FROM fromLogs WHERE ipAddr = (%s);", (temp1,))
+    t2 = cursor.fetchall()
+    pprint.pprint(t2)
