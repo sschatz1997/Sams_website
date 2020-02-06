@@ -35,6 +35,13 @@ def getAllIPs():
     db = c1()
     cursor = db.cursor()
     cursor.execute("SELECT ipAddr FROM fromLogs;")
-    temp1 = str(cursor.fetchall())
+    temp1 = cursor.fetchall()
+    x = 0
+    finial = []
+    while(x != len(temp1)):
+        temp2 = str(temp1[x])
+        temp2 = temp2.strip("[(',')]")
+        finial.append(temp2)
+        x += 1
     #temp1 = unform.strip("[(',')]")
-    return temp1
+    return finial
