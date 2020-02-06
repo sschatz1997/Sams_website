@@ -76,7 +76,7 @@ def getFiles(ip):
     pprint.pprint(t2)
 
 def toCSV(ips):
-    with open("/home/sam/Documents/ips.csv", 'wb') as f:
+    with open("/home/sam/Documents/ips.csv", 'w') as f:
         wr = csv.writer(f,delimiter=',')
         wr.writerows(ips)
     f.close()
