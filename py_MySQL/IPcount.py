@@ -36,5 +36,5 @@ def getAllIPs():
     cursor = db.cursor()
     cursor.execute("SELECT ipAddr FROM fromLogs;")
     unform = str(cursor.fetchall())
-    temp1 = unform.strip("[(',')]")
+    #temp1 = unform.strip("[(',')]")
     return temp1
