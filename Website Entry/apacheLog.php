@@ -42,9 +42,9 @@ while($x < $count2){
 	$ip = $prep2->fetch(PDO::FETCH_BOTH);
 	$prep3->bindParam(1,$id,PDO::PARAM_INT);
 	$prep3->execute();
-	$ip = array_pop($ip);
+	//$ip = array_pop($ip);
 	$date = $prep3->fetch(PDO::FETCH_BOTH);
-	$date = array_pop($date);
+	//$date = array_pop($date);
 
 	
 	echo"<tr>";
