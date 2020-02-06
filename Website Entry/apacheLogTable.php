@@ -72,14 +72,18 @@ function getIP()
 			</form>
 		</div>
     </div>
-    <center><table>
-        <tr>
-            <th>Log file</th>
-            <th>IP address</th>
-            <th>Time Entered</th>
-        </tr>
-        <?php require_once "apacheLog.php";?>
-    </table></center>
+    <div class="wrapper">
+        <div id="center">
+            <center><table>
+                <tr>
+                    <th>Log file</th>
+                    <th>IP address</th>
+                    <th>Time Entered</th>
+                </tr>
+                <?php require_once "apacheLog.php";?>
+            </table></center>
+        </div>
+    </div>
     
 </body>
 </html>
