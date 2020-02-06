@@ -104,8 +104,8 @@ def toLogFile(list1,file1):
 	size = len(list1)
 	#temp = str(list1[1])
 	x = 0
-	print("Type1: ", type(temp))
-	print("Type: ", type(file1))
+	#print("Type1: ", type(temp))
+	#print("Type: ", type(file1))
 	while(x != size):
 		temp = str(list1[x])
 		tup = (file1,temp)
