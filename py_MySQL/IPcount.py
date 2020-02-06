@@ -12,6 +12,23 @@ from functions import files, getLinesFromFile, getIPs, nmapScan, toLogFile
 #| dateSubmitted | datetime     | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
 #+---------------+--------------+------+-----+-------------------+-------------------+
 
+def c1():
+	file = "/home/sam/pull/test.txt"
+	with open(file, 'r') as f:
+		coded = f.readline()
+	f.close()
+
+	temp1 = base64.b64decode(coded)
+	temp2 = temp1.decode('utf-8')
+	db = mysql.connector.connect(
+		host="localhost",
+		passwd = temp2,
+		user="localUser1", 
+		database="main", 
+		auth_plugin='mysql_native_password'
+	)
+	return db  
+
 def getAllIPs():
    	db = c1()
 	cursor = db.cursor()
