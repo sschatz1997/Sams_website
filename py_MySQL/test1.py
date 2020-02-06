@@ -17,7 +17,7 @@ while(x < len(files)):
 	if(x == 0):
 		temp = []
 		temp = getIPs(files[x])
-		d1['a'] = temp4
+		d1['a'] = temp
 	elif(x == 1):
 		temp = []
 		temp = getIPs(files[x])
