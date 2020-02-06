@@ -48,7 +48,7 @@ def getChangedLogFiles():
 	exclude = ["alternatives.log", "/var/log/apt/", "/var/log/cassandra"]
 
 def getIPs(file1):
-	log = list(open(file,'r').read().split('\n'))
+	log = list(open(file1,'r').read().split('\n'))
 	newip = []
 
 	for entry in log:
