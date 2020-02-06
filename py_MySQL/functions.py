@@ -107,7 +107,7 @@ def toLogFile(list1,file1):
 	#	temp = list1[x]
 	#	tup = (file1,temp,)
 	tup = (file1,list1,)
-	cursor.commit("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", tup)
+	cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", tup)
 	db.commit()
 	db.close()
 
