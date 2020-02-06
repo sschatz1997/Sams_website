@@ -102,7 +102,7 @@ def toLogFile(list1,file1):
 	cursor = db.cursor()
 	
 	size = len(list1)
-	temp = str(list1[x])
+	temp = str(list1[1])
 	x = 0
 	print("Type1: ", type(temp))
 	print("Type: ", type(file1))
