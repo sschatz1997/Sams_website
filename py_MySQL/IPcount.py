@@ -30,8 +30,8 @@ def c1():
 	return db  
 
 def getAllIPs():
-   	db = c1()
-	cursor = db.cursor()
+    db = c1()
+    cursor = db.cursor()
     cursor.execute("SELECT ipAddr FROM fromLogs;")
     unform = str(cursor.fetchall())
     temp1 = unform.strip("[(',')]")
