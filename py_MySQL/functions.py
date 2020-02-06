@@ -104,7 +104,9 @@ def toLogFile(list1,file1):
 	size = len(list1)
 	x = 0
 	while(x != size):
-		temp = list1[x]
+		temp = str(list1[x])
+		#print("Type1: ", type(temp))
+		#print("Type: ", type(str(temp)))
 	#	tup = (file1,temp,)
 		cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
 		db.commit()
