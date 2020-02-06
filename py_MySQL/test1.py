@@ -29,6 +29,7 @@ while(x < len(files)):
 		d1['b'] = temp
 		t = []
 		t = list(d1['b'])
+		toLogFile(t,str(files[x]))
 		print(d1['b'])
 	elif(x == 2):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
