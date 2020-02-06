@@ -44,4 +44,21 @@ def getAllIPs():
         finial.append(temp2)
         x += 1
     #temp1 = unform.strip("[(',')]")
+    db.close()
     return finial
+
+def getMultiples(list1):
+    db = c1()
+    cursor = db.cursor()
+    size = len(list1)
+    dups = []
+    x = 0
+ #  while(x != size):
+    temp1 = str(list1[33]) 
+    cursor.execute("SELECT ipAddr FROM fromLogs WHERE ipAddr = (%s);", (temp1,))
+    t2 = cursor.fetchall()
+    if(len(t2) != 1 or len(t1) != 0):
+        print("is a dup")
+    else:
+        print("single entry")
+
