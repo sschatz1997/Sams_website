@@ -1,21 +1,22 @@
 <?php
 require_once "config.php";
 $log = "/var/log/apache2/access.log";
-$prep1 = $con->prepare('SELECT logFile from fromLogs WHERE logFile = "?" order by id desc limit 1;');
+$prep1 = $con->prepare('SELECT id from fromLogs WHERE logFile = ?;');
 $prep1->bindParam(1,$log,PDO::PARAM_STR,100);
 $prep1->execute();
 $entries = $prep1->fetch(PDO::FETCH_BOTH);
-$entries = count($entries);
+//$entries = $prep1->fetchAll(PDO::FETCH_ASSOC);
+if(is_array($entries)){
+	$count = count($entries);
+//	echo "Their are : ". $count . "<br>";
+//	print_r($entries);
+	$prep2 = $con->prepare('SELECT ipAddr from fromLogs WHERE id = ?;');
+	$prep3 = $con->prepare('SELECT timeSubmitted from fromLogs WHERE id = ?;')
+}else{
+	echo "error";
+}
 
-//$name = $prep->fetch_array(PDO::FETCH_BOTH);
 
-$prep2 = $con->prepare('SELECT created_at FROM users WHERE username = ?;');
-//$prep3 = $con->prepare('SELECT time1 FROM logins1 WHERE username = ?;');
-$prep3 = $con->prepare('SELECT id FROM logins1 WHERE username = ? ORDER BY id DESC LIMIT 1;');
-$prep4 = $con->prepare('SELECT time1 FROM logins1 WHERE id = ?;');
-$prep5 = $con->prepare('SELECT ip FROM logins1 WHERE id = ?;');
-
-//echo "entries: " . $entries;
 /*
 fromLogs
 +---------------+--------------+------+-----+-------------------+-------------------+
@@ -31,33 +32,20 @@ fromLogs
 $x = 0;
 $masterTime = [];
 //echo "<th>".$tt."<th>";
-while($x < $entries){
-	
-	$name = $prep->fetch(PDO::FETCH_BOTH);
-	$un = array_pop($name);
-	$prep2->bindParam(1,$un,PDO::PARAM_STR, 50);
-	$prep2->execute();
-	$date1 = $prep2->fetch(PDO::FETCH_BOTH);
-	$date = array_pop($date1);
-	
-	$prep3->bindParam(1,$un,PDO::PARAM_STR, 50);
-	$prep3->execute();
-	$id = $prep3->fetch(PDO::FETCH_BOTH);
-	$id = intval(array_pop($id));
+while($x < $count){
+	$id = intval(array_pop($entries));
+	$prep2->bindParam(1,$id,PDO::PARAM_INT);
+	$prep3->bindParam(1,$id,PDO::PARAM_INT);
+	$ip = $prep2->fetch(PDO::FETCH_BOTH);
+	$ip = array_pop($ip);
+	$date = $prep2->fetch(PDO::FETCH_BOTH);
+	$date = array_pop($date);
 
-	$prep4->bindParam(1,$id,PDO::PARAM_INT);
-	$prep4->execute();
-	$time1 = $prep4->fetch(PDO::FETCH_BOTH);
-    $time1 = array_pop($time1);
-    
-    $prep5->bindParam(1,$id,PDO::PARAM_INT);
-    $prep5->execute();
-    $ip = $prep5->fetch(PDO::FETCH_BOTH);
-    $ip = array_pop($ip);
 	
 	echo"<tr>";
-    echo "<th>".$time1."</th>";
-    echo "<th>".$ip."</th>";
+    echo "<th>".$log."</th>";//logfile
+	echo "<th>".$ip."</th>";//ipaddr
+	echo "<th>".$date."</th>";//date submitted
 	echo"</tr>";
 	$x++;
 } 
