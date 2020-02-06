@@ -53,12 +53,14 @@ def getMultiples(list1):
     size = len(list1)
     dups = []
     x = 0
- #  while(x != size):
-    temp1 = str(list1[3]) 
-    cursor.execute("SELECT ipAddr FROM fromLogs WHERE ipAddr = (%s);", (temp1,))
-    t2 = cursor.fetchall()
-    if(len(t2) != 1):
-        print("is a dup   ", t2)
-    else:
-        print("single entry   ", t2)
+    while(x != size):
+        temp1 = str(list1[x]) 
+        cursor.execute("SELECT ipAddr FROM fromLogs WHERE ipAddr = (%s);", (temp1,))
+        t2 = cursor.fetchall()
+        if(len(t2) != 1):
+            print("is a dup   ", t2)
+        else:
+            print("single entry   ", t2)
+
+        x += 1
 
