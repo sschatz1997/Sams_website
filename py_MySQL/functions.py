@@ -102,17 +102,18 @@ def toLogFile(list1,file1):
 	cursor = db.cursor()
 	
 	size = len(list1)
+	temp = str(list1[x])
 	x = 0
-	while(x != size):
-		temp = str(list1[x])
-		#print("Type1: ", type(temp))
-		#print("Type: ", type(str(temp)))
+	print("Type1: ", type(temp))
+	print("Type: ", type(file1))
+	#while(x != size):
+	#	temp = str(list1[x])
 	#	tup = (file1,temp,)
-		cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
-		db.commit()
-		db.close()
-		s(0.5)
-		x += 1
+	#	cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
+	#	db.commit()
+	#	db.close()
+	#	s(0.5)
+	#	x += 1
 
 def nmapScan(ip,file1):
 	nm = nmap.PortScaner()
