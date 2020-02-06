@@ -73,18 +73,14 @@ function getIP()
 			</form>
 		</div>
     </div>
-    <div class="wrapper">
-        <div id="center">
-            <center><table>
-                <tr>
-                    <th>Log file</th>
-                    <th>IP address</th>
-                    <th>Time Entered</th>
-                </tr>
-                <?php require_once "mysqlLog.php";?>
-            </table></center>
-        </div>
-    </div>
+	<center><table>
+		<tr>
+			<th>Log file</th>
+			<th>IP address</th>
+			<th>Time Entered</th>
+		</tr>
+		<?php require_once "mysqlLog.php";?>
+	</table></center>
     
 </body>
 </html>

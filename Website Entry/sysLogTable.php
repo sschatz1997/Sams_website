@@ -36,6 +36,14 @@ function getIP()
 	<link rel="stylesheet" href="dropdown.css">
 	<link rel="stylesheet" href="main.css">
 	<hr>
+	<style>
+		tr, th, table{
+			border: 4px solid white;
+			border-collapse: collapse;
+			width: 100%;
+			white-space: nowrap;
+		}
+	</style>
 </head>
 
 <body>
@@ -73,18 +81,15 @@ function getIP()
 			</form>
 		</div>
     </div>
-    <div class="wrapper">
-        <div id="center">
-            <center><table>
-                <tr>
-                    <th>Log file</th>
-                    <th>IP address</th>
-                    <th>Time Entered</th>
-                </tr>
-                <?php require_once "sysLog.php";?>
-            </table></center>
-        </div>
-    </div>
+	<center><table>
+		<tr>
+			<th>Log file</th>
+			<th>IP address</th>
+			<th>Time Entered</th>
+		</tr>
+		<?php require_once "sysLog.php";?>
+	</table></center>
+
     
 </body>
 </html>

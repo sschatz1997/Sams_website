@@ -36,6 +36,14 @@ function getIP()
 	<link rel="stylesheet" href="dropdown.css">
 	<link rel="stylesheet" href="main.css">
 	<hr>
+	<style>
+		tr, th, table{
+			border: 4px solid white;
+			border-collapse: collapse;
+			width: 100%;
+			white-space: nowrap;
+		}
+	</style>
 </head>
 
 <body>
