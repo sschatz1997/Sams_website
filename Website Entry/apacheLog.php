@@ -10,12 +10,12 @@ if(is_array($entries)){
 	$count = count($entries);
 //	echo "Their are : ". $count . "<br>";
 //	print_r($entries);
-	$prep2 = $con->prepare('SELECT ipAddr from fromLogs WHERE id = ?;');
-	$prep3 = $con->prepare('SELECT timeSubmitted from fromLogs WHERE id = ?;')
 }else{
 	echo "error";
 }
 
+$prep2 = $con->prepare('SELECT ipAddr from fromLogs WHERE id = ?;');
+$prep3 = $con->prepare('SELECT timeSubmitted from fromLogs WHERE id = ?;');
 
 /*
 fromLogs
@@ -32,13 +32,15 @@ fromLogs
 $x = 0;
 $masterTime = [];
 //echo "<th>".$tt."<th>";
+$id = intval(array_pop($entries));
 while($x < $count){
-	$id = intval(array_pop($entries));
 	$prep2->bindParam(1,$id,PDO::PARAM_INT);
-	$prep3->bindParam(1,$id,PDO::PARAM_INT);
+	$prep2->execute();
 	$ip = $prep2->fetch(PDO::FETCH_BOTH);
+	$prep3->bindParam(1,$id,PDO::PARAM_INT);
+	$prep3->execute();
 	$ip = array_pop($ip);
-	$date = $prep2->fetch(PDO::FETCH_BOTH);
+	$date = $prep3->fetch(PDO::FETCH_BOTH);
 	$date = array_pop($date);
 
 	
@@ -47,6 +49,7 @@ while($x < $count){
 	echo "<th>".$ip."</th>";//ipaddr
 	echo "<th>".$date."</th>";//date submitted
 	echo"</tr>";
+	$id++;
 	$x++;
 } 
 
