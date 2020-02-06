@@ -60,7 +60,7 @@ def getMultiples(list1):
         t2 = cursor.fetchall()
         if(len(t2) != 1):
             print("is a dup   ", t2)
-            getFiles(str(t1.pop()))
+            getFiles(str(t2.pop()))
         else:
             print("single entry   ", t2)
 
@@ -70,6 +70,6 @@ def getFiles(ip):
     db = c1()
     cursor = db.cursor()
     ip = ip.strip("[(',')]")
-    cursor.execute("SELECT logFile FROM fromLogs WHERE ipAddr = (%s);", (temp1,))
+    cursor.execute("SELECT logFile FROM fromLogs WHERE ipAddr = (%s);", (ip,))
     t2 = cursor.fetchall()
     pprint.pprint(t2)
