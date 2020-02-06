@@ -8,6 +8,7 @@ import datetime
 import numpy as np
 import mysql.connector
 from random import randint
+from time import sleep as s
 
 def files():
 	fs = ["/var/log/auth.log", "/var/log/syslog","/var/log/ufw.log","/var/log/apache2/access.log","/var/log/apache2/error.log", "/var/log/proftpd/proftpd.log" ]
@@ -84,7 +85,6 @@ def logCreator():
 #+---------------+--------------+------+-----+-------------------+-------------------+
 
 
-
 def secPlusMySQL():
 	db = c1()
 	cursor = db.cursor()
@@ -97,11 +97,36 @@ def secPlusMySQL():
 	db.commit()
 	db.close()
 
-def nmapScan(ip):
-	#nm = nmap.PortScaner()
-	#rand = nm.scan(ip, "1-444")
+def toLogFile(list1,file1):
+	db = c1()
+	cursor = db.cursor()
+	
+	#size = len(list1)
+	x = 0
+	#while(x != size):
+	#	temp = list1[x]
+	#	tup = (file1,temp,)
+	tup = (file1,list1,)
+	cursor.commit("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", tup)
+	db.commit()
+	db.close()
+
+def nmapScan(ip,file1):
+	nm = nmap.PortScaner()
+	rand = nm.scan(ip, "1-444")
 	print("THIS WILL TAKE A WHILE")
-	p1 = "/home/sam/CSVnmap/"
+	if(file1 = "/var/log/auth.log"):
+		p1 = "/home/sam/CSVnmap/auth/"
+	elif(file1 = "/var/log/syslog"):
+		p2 = "/home/sam/CSVnmap/sys/"
+	elif(file1 = "/var/log/ufw.log"):
+		p3 = "/home/sam/CSVnmap/ufw/"
+	elif(file1 = "/var/log/apache2/access.log"):
+		p4 = "/home/sam/CSVnmap/apache/"
+	elif(file1 = "/var/log/apache2/error.log"):
+		p5 = "/home/sam/CSVnmap/apacheE/"
+	elif(file1 = "/var/log/proftpd/proftpd.log"):
+		p6 = "/home/sam/CSVnmap/ftp/"
 	ending = ".csv"
 	file1 = p1 + str(ip) + ending
 
