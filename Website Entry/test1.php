@@ -14,3 +14,66 @@ if(is_array($entries)){
 	echo "is not an array " . gettype($entries) . "<br>";
 }
 ?>
+<?php
+require_once "config.php";
+$log = "/var/log/syslog";
+$prep0 = $con->query('SELECT id FROM fromLogs WHERE logFile = "/var/log/syslog";');
+$prep0->execute();
+$count2 = $prep0->rowCount();
+$prep1 = $con->prepare('SELECT id from fromLogs WHERE logFile = ? order by id desc limit 1;');
+$prep1->bindParam(1,$log,PDO::PARAM_STR,100);
+$prep1->execute();
+$entries = $prep1->fetch(PDO::FETCH_BOTH);
+//$entries2 = $entries->num_rows;
+//$entries = $prep1->fetchAll(PDO::FETCH_ASSOC);
+if(is_array($entries)){
+	$count = sizeof($entries);
+//	echo "Their are : ". $count . "<br>";
+	print_r($count2);
+}else{
+	echo "error";
+}
+
+$prep2 = $con->prepare('SELECT ipAddr from fromLogs WHERE id = ?;');
+$prep3 = $con->prepare('SELECT timeSubmitted from fromLogs WHERE id = ?;');
+
+/*
+fromLogs
++---------------+--------------+------+-----+-------------------+-------------------+
+| Field         | Type         | Null | Key | Default           | Extra             |
++---------------+--------------+------+-----+-------------------+-------------------+
+| id            | int          | NO   | PRI | NULL              | auto_increment    |
+| logFile       | varchar(100) | NO   |     | NULL              |                   |
+| ipAddr        | varchar(30)  | NO   |     | NULL              |                   |
+| timeSubmitted | timestamp    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| dateSubmitted | datetime     | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++---------------+--------------+------+-----+-------------------+-------------------+
+*/
+$x = 0;
+$masterTime = [];
+//echo "<th>".$tt."<th>";
+$id = intval(array_pop($entries));
+while($x < $count2){
+	$prep2->bindParam(1,$id,PDO::PARAM_INT);
+	$prep2->execute();
+	$ip = $prep2->fetch(PDO::FETCH_BOTH);
+	$prep3->bindParam(1,$id,PDO::PARAM_INT);
+	$prep3->execute();
+	$ip = array_pop($ip);
+	$date = $prep3->fetch(PDO::FETCH_BOTH);
+	$date = array_pop($date);
+
+	
+	echo"<tr>";
+    echo "<th>".$log."</th>";//logfile
+	echo "<th>".$ip."</th>";//ipaddr
+	echo "<th>".$date."</th>";//date submitted
+	echo"</tr>";
+	$id++;
+	$x++;
+} 
+
+$test1 = "test1";
+
+
+?>
