@@ -1,18 +1,12 @@
 <?php
 require_once "config.php";
+$log = "/var/log/apache2/access.log";
+$prep1 = $con->prepare('SELECT logFile from fromLogs WHERE logFile = "?" order by id desc limit 1;');
+$prep1->bindParam(1,$log,PDO::PARAM_STR,100);
+$prep1->execute();
+$entries = $prep1->fetch(PDO::FETCH_BOTH);
+$entries = count($entries);
 
-$loop = $con->query('SELECT id from users order by id desc limit 1;');
-$loop->execute();
-$entries = $loop->fetch(PDO::FETCH_BOTH);
-$entries = intval(array_pop($entries));
-
-$loop1 = $con->query('SELECT id from logins1 order by id desc limit 1;');
-$loop1->execute();
-$entries2 = $loop->fetch(PDO::FETCH_BOTH);
-$entries2 = intval($entries);
-
-$prep = $con->query('SELECT username FROM users;');
-$prep->execute();
 //$name = $prep->fetch_array(PDO::FETCH_BOTH);
 
 $prep2 = $con->prepare('SELECT created_at FROM users WHERE username = ?;');
@@ -22,7 +16,18 @@ $prep4 = $con->prepare('SELECT time1 FROM logins1 WHERE id = ?;');
 $prep5 = $con->prepare('SELECT ip FROM logins1 WHERE id = ?;');
 
 //echo "entries: " . $entries;
-
+/*
+fromLogs
++---------------+--------------+------+-----+-------------------+-------------------+
+| Field         | Type         | Null | Key | Default           | Extra             |
++---------------+--------------+------+-----+-------------------+-------------------+
+| id            | int          | NO   | PRI | NULL              | auto_increment    |
+| logFile       | varchar(100) | NO   |     | NULL              |                   |
+| ipAddr        | varchar(30)  | NO   |     | NULL              |                   |
+| timeSubmitted | timestamp    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| dateSubmitted | datetime     | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++---------------+--------------+------+-----+-------------------+-------------------+
+*/
 $x = 0;
 $masterTime = [];
 //echo "<th>".$tt."<th>";

@@ -62,7 +62,7 @@ if(isset($_POST["name"])){
 			<div class="dropdown-content">
 				<a href="ufwLogTable.php">UFW Table</a>
 				<a href="sysLogTable.php">Syslog Table</a>
-				<a href="apacheLog.php">Apache Table</a>
+				<a href="apacheLogTable.php">Apache Table</a>
 				<a href="apacheErrorLogTable.php">Apache Error Table</a>
 				<a href="mysqlLogTable.php">MySql Table</a>
 				<a href="ftpLogTable.php">FTP Table</a>
