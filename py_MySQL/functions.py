@@ -105,8 +105,8 @@ def toLogFile(list1,file1):
 	x = 0
 	while(x != size):
 		temp = list1[x]
-		tup = (file1,temp,)
-		cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", tup)
+	#	tup = (file1,temp,)
+		cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
 		db.commit()
 		db.close()
 		s(0.5)
