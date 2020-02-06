@@ -115,17 +115,17 @@ def nmapScan(ip,file1):
 	nm = nmap.PortScaner()
 	rand = nm.scan(ip, "1-444")
 	print("THIS WILL TAKE A WHILE")
-	if(file1 = "/var/log/auth.log"):
+	if(file1 == "/var/log/auth.log"):
 		p1 = "/home/sam/CSVnmap/auth/"
-	elif(file1 = "/var/log/syslog"):
+	elif(file1 == "/var/log/syslog"):
 		p2 = "/home/sam/CSVnmap/sys/"
-	elif(file1 = "/var/log/ufw.log"):
+	elif(file1 == "/var/log/ufw.log"):
 		p3 = "/home/sam/CSVnmap/ufw/"
-	elif(file1 = "/var/log/apache2/access.log"):
+	elif(file1 == "/var/log/apache2/access.log"):
 		p4 = "/home/sam/CSVnmap/apache/"
-	elif(file1 = "/var/log/apache2/error.log"):
+	elif(file1 == "/var/log/apache2/error.log"):
 		p5 = "/home/sam/CSVnmap/apacheE/"
-	elif(file1 = "/var/log/proftpd/proftpd.log"):
+	elif(file1 == "/var/log/proftpd/proftpd.log"):
 		p6 = "/home/sam/CSVnmap/ftp/"
 	ending = ".csv"
 	file1 = p1 + str(ip) + ending
