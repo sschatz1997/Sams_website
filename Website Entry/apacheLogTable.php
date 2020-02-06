@@ -48,15 +48,14 @@ function getIP()
 			<button class="dropbtn">IP Log Tables
 				<i class="fa fa-caret-down"></i>
             </button>
-        </div>
-        <div class="dropdown">
 			<div class="dropdown-content">
 				<a href="ufwLogTable.php">UFW Table</a>
 				<a href="sysLogTable.php">Syslog Table</a>
 				<a href="apacheLogTable.php">Apache Table</a>
 				<a href="apacheErrorLogTable.php">Apache Error Table</a>
 				<a href="mysqlLogTable.php">MySql Table</a>
-				<a href="ftpLogTable.php">FTP Table</a>
+                <a href="ftpLogTable.php">FTP Table</a>
+            </div>
 		</div>
 		<div class="dropdown">
 			<button class="dropbtn">Study forms
