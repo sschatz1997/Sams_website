@@ -20,7 +20,7 @@ while(x < len(files)):
 		d1['a'] = temp
 		t = []
 		t = list(d1['a'])
-		toLogFile(t,temp)
+		toLogFile(t,files[x])
 		print(d1['a'])
 	elif(x == 1):
 		print("FILE: ", files[x]," and has ", getLinesFromFile(files[x]))
