@@ -42,6 +42,18 @@ function getIP()
 		<a href="home.php">Home</a>
 		<a href="home.php">Profile</a>
 		<div class="dropdown">
+			<button class="dropbtn">IP Log Tables
+				<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="ufwLogTable.php">UFW Table</a>
+				<a href="sysLogTable.php">Syslog Table</a>
+				<a href="apacheLogTablpe.php">Apache Table</a>
+				<a href="apacheErrorLogTablpe.php">Apache Error Table</a>
+				<a href="mysqlLogTablpe.php">MySql Table</a>
+				<a href="ftpLogTablpe.php">FTP Table</a>
+		</div>
+		<div class="dropdown">
 			<button class="dropbtn">Study forms
 				<i class="fa fa-caret-down"></i>
 			</button>
