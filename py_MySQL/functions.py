@@ -9,6 +9,8 @@ import numpy as np
 import mysql.connector
 from random import randint
 from time import sleep as s
+from IPcount import getAllIPs, getMultiples, toCSV
+
 
 def files():
 	fs = ["/var/log/auth.log", "/var/log/syslog","/var/log/ufw.log","/var/log/apache2/access.log","/var/log/apache2/error.log", "/var/log/proftpd/proftpd.log" ]
@@ -30,6 +32,23 @@ def c1():
 		auth_plugin='mysql_native_password'
 	)
 	return db  
+
+def compare(list1):
+	loops = len(list1)
+	x = 0
+	t = 0
+	master = []
+	old = getAllIPs()
+	while(x != len(old)):
+		while(t != len(loopd)):
+			if(list[t] == old[x]):
+				print("dup")
+			else:
+				master.append(list1[t])
+			t += 1
+		x += 1
+
+				
 
 def showTables():
 	db = c1()
