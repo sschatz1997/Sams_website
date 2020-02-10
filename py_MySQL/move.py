@@ -10,7 +10,7 @@ file2 = files1()
 while(x1 != len(file1)):
     print("Proccessing %s." % file1[x1])
     temp2 = getBasedOnFile(file1[x1])
-    TF1 = matchfileToExt(file1[x1])
+    TF1 = matchExtToFile(file1[x1])
     insertToLog(TF1, temp2)
     x1 += 1
     
