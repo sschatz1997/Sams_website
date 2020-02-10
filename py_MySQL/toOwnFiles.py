@@ -9,6 +9,7 @@ import numpy as np
 import mysql.connector
 from random import randint
 from functions import files
+from time import sleep as s
 
 
 def files1():
@@ -101,10 +102,10 @@ def insertToLog(file1, arr):
     cursor = db.cursor()
    
     while(x != len(arr)):
-        val = arr[x]
+        val = str(arr[x])
         state = "INSERT INTO %s(ipAddr) VALUES (%s);"
         tup = (file1,val)
-        cursor.execute()
+        cursor.execute(state, tup)
         db.commit()
         x += 1
     db.close()
