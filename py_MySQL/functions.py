@@ -41,7 +41,9 @@ def compare(list1):
 	master = getAllIPs()
 	for i in list1:
 		if i not in master:
-			new.append()
+			new.append(i)
+		else:
+			print("no new.")
 
 	return new
 				
