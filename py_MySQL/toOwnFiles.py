@@ -103,7 +103,7 @@ def matchExtToFile(file):
         x += 1
     return "0"
 
-def getStatement(fileN):
+def getStatement(file):
     if(file == "auth"):
         st = "INSERT INTO auth(ipAddr) VALUES (%s);"
     elif(file == "syslog"):
