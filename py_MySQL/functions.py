@@ -121,13 +121,16 @@ def toLogFile(list1,file1):
 	x = 0
 	#print("Type1: ", type(temp))
 	#print("Type: ", type(file1))
-	while(x != size):
-		val = str(l1[x])
-		print("val = ", val)
-		#insert1(val,file1)
-		#cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
-		s(0.5)
-		x += 1
+	if(size != 0):
+		while(x != size):
+			val = str(l1[x])
+			print("val = ", val)
+			#insert1(val,file1)
+			#cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
+			s(0.5)
+			x += 1
+	else:
+		print("no new values: not inserting anything.")
 
 def getAllIPs():
     db = c1()
