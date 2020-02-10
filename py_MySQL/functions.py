@@ -113,14 +113,14 @@ def secPlusMySQL():
 	db.close()
 
 def toLogFile(list1,file1):
-
-	size = len(list1)
+	l1 = compare(list1)
+	size = len(l1)
 	#temp = str(list1[1])
 	x = 0
 	#print("Type1: ", type(temp))
 	#print("Type: ", type(file1))
 	while(x != size):
-		val = str(list1[x])
+		val = str(l1[x])
 		print("val = ", val)
 		#insert1(val,file1)
 		#cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
