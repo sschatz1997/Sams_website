@@ -157,19 +157,28 @@ def getLogFile(ip):
 	statement = "SELECT logFile FROM fromLogs WHERE ipAddr = %s;"
 	cursor.execute(statement, tup)
 	files = cursor.fetchall()
-	if(len(files) != 1):
-		while(x != len(files)):
-			print("more then one file. thier are %s files for " % len(files))
-			print(ip)
-			temp1 = str(files[x])
-			temp2 = temp1.strip("[(',')]")
-			tempA.append(temp2)
-			x += 1
-		return tempA, x
-	else:
-		temp1 = str(files[0])
+
+	while(x != len(files)):
+		temp1 = str(files[x])
 		temp2 = temp1.strip("[(',')]")
-		return temp1, 0
+		tempA.append(temp2)
+		x += 1
+	return tempA
+
+
+#	if(len(files) != 1):
+#		while(x != len(files)):
+#			print("more then one file. thier are %s files for " % len(files))
+#			print(ip)
+#			temp1 = str(files[x])
+#			temp2 = temp1.strip("[(',')]")
+#			tempA.append(temp2)
+#			x += 1
+#		return tempA, x
+#	else:
+#		temp1 = str(files[0])
+#		temp2 = temp1.strip("[(',')]")
+#		return temp1, 0
 
 
 # ipCounter
@@ -186,8 +195,8 @@ def getLogFile(ip):
 
 # pass the value after the first run and file type.
 def ipCounter():
-	db = c1()
-	cursor = db.cursor()
+#	db = c1()
+#	cursor = db.cursor()
 	# FIRST RUN
 	ips = getAllIPs()
 	occr = 1
@@ -197,21 +206,13 @@ def ipCounter():
 	while(x != size):
 		t = 0
 		fileCheck = getLogFile(ips[x])
-		filesN = fileCheck[1]
-		fileT = list(fileCheck[0])
-		if(filesN < 0):			
-			while(t != filesN):
-				file1 = fileT.pop()
-				ip = ips[x]
-				occr += filesN
-				insert2(ip,occr,file1)
-				t += 1
-		else:
-			file1 = fileT.pop()
-			ip = ips[x]
-			occr += filesN
-			insert2(ip,occr,file1)
-
+		size2 = len(fileCheck)
+		if(size2 < 1):
+			occr = size
+		while(t != size2):
+			file1 = fileCheck.pop()
+			insert2(ips,occr,file1)
+			t += 1
 		x += 1
 	
 
