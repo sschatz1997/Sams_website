@@ -82,11 +82,11 @@ def matchfileToExt(file):
     elif(file == "ufw"):
         filePath = file2[2]
     elif(file == "access"):
-        filePath = files2[3]
+        filePath = file2[3]
     elif(file == "error"):
-        filePath = files2[4]
+        filePath = file2[4]
     elif(file == "proftpd"):
-        filePath = files2[5]
+        filePath = file2[5]
     else:
         filePath = "0"
     
@@ -103,6 +103,21 @@ def matchExtToFile(file):
         x += 1
     return "0"
 
+def getStatement(fileN):
+        if(file == "auth"):
+        st = "INSERT INTO auth(ipAddr) VALUES (%s);"
+    elif(file == "syslog"):
+        st = "INSERT INTO syslog(ipAddr) VALUES (%s);"  
+    elif(file == "ufw"):
+        st = "INSERT INTO ufw(ipAddr) VALUES (%s);"
+    elif(file == "access"):
+        st = "INSERT INTO access(ipAddr) VALUES (%s);"
+    elif(file == "error"):
+        st = "INSERT INTO error(ipAddr) VALUES (%s);"
+    elif(file == "proftpd"):
+        st = "INSERT INTO proftpd(ipAddr) VALUES (%s);"
+
+    return st
 
 def insertToLog(file1, arr): 
     # this needs to be the non file extension 
@@ -112,11 +127,9 @@ def insertToLog(file1, arr):
    
     while(x != len(arr)):
         val = str(arr[x])
-        state = "INSERT INTO %s(ipAddr) VALUES (%s);"
-        tup = (file1,val)
-        tup2 = (state, file1, val)
+        state = getStatement(file1)
         print("Will be excuted: ", tup)
-        cursor.execute(state, tup)
+        cursor.execute(state, val)
         db.commit()
         s(1)
         x += 1
