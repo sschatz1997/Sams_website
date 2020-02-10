@@ -27,9 +27,11 @@ def matchfileToExt(file):
 
 def matchExtToFile(file):
     # this does conversion
+    x = 0
     file2 = files()
     file3 = files1()
     while(x != len(file3)):
-        if(file = file3[x]):
+        if(file == file3[x]):
             return file2[x]
+        x += 1
     return "0"
