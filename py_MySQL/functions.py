@@ -37,17 +37,13 @@ def compare(list1):
 	loops = len(list1)
 	x = 0
 	t = 0
-	master = []
-	old = getAllIPs()
-	while(x != len(old)):
-		while(t != len(loopd)):
-			if(list[t] == old[x]):
-				print("dup")
-			else:
-				master.append(list1[t])
-			t += 1
-		x += 1
+	new = []
+	master = getAllIPs()
+	for i in list1:
+		if i not in master:
+			new.append()
 
+	return new
 				
 
 def showTables():
@@ -125,7 +121,8 @@ def toLogFile(list1,file1):
 	#print("Type: ", type(file1))
 	while(x != size):
 		val = str(list1[x])
-		insert1(val,file1)
+		print("val = ", val)
+		#insert1(val,file1)
 		#cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
 		s(0.5)
 		x += 1
