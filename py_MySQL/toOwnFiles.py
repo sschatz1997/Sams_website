@@ -46,7 +46,7 @@ def logCreator():
         print("Making the %s database." % temp)
         s1 = "CREATE TABLE IF NOT EXISTS " 
         s3 = " (id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, ipAddr VARCHAR(30) NOT NULL, timeSubmitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL);" 
-        statement = s1 + temp + s3
+        state = s1 + temp + s3
         cursor.execute(state)
         db.commit()
         s(1)
