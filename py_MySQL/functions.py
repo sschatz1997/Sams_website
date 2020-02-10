@@ -151,15 +151,16 @@ def getAllIPs():
 def getLogFile(ip):
 	tempA = []
 	x = 0
-    db = c1()
-    cursor = db.cursor()
+	db = c1()
+	cursor = db.cursor()
 	tup = (ip,)
 	statement = "SELECT logFile FROM fromLogs WHERE ipAddr = %s;"
 	cursor.execute(statement, tup)
 	files = cursor.fetchall()
 	if(len(files) != 1):
 		while(x != len(files)):
-			print("more then one file.")
+			print("more then one file. thier are %s files for " % len(files))
+			print(ip)
 			temp1 = str(files[x])
 			temp2 = temp1.strip("[(',')]")
 			tempA.append(temp2)
