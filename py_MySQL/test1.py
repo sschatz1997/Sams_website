@@ -1,5 +1,5 @@
 from time import sleep as s
-from functions import files, getLinesFromFile, getIPs, nmapScan, toLogFile
+from functions import files, getLinesFromFile, getIPs, nmapScan, toLogFile, ipCounter
 from move import insertIntoOtherDB
 
 files = files()
@@ -72,5 +72,6 @@ while(x < len(files)):
 	s(1)
 	x += 1
 insertIntoOtherDB()
+ipCounter()
 #print(files)
 
