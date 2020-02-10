@@ -33,6 +33,7 @@ def c1():
 	return db  
 
 def logCreator():
+    # this needs to be the non file extension
     files = files1()
     x = 0
 	db = c1()
@@ -50,9 +51,17 @@ def logCreator():
 	db.close()
 
 def getBasedOnFile(file):
+    # this needs to be the full extension
     db = c1()
     cursor = db.cursor()
-    cursor.execute("SELECT ipAddr FROM fromLogs WHERE logFile = %s;", (str(file)),)
+    file2 = matchfileToExt(file)
+
+    if(file2 == "0"):
+        file2 = file
+    else:
+        file2 = matchfileToExt(file)
+    
+    cursor.execute("SELECT ipAddr FROM fromLogs WHERE logFile = %s;", (str(file2)),)
     temp = cursor.fetchall()
     db.close()
     x = 0
@@ -65,26 +74,37 @@ def getBasedOnFile(file):
    return ipArr
 
 def matchfileToExt(file):
+    # this does conversion
     file2 = files()
-    if(file = "auth.log"):
+    if(file == "auth.log"):
         filePath = file2[0]
-    elif(file = "syslog"):
+    elif(file == "syslog"):
         filePath = file2[1]
-    elif(file = "ufw.log"):
+    elif(file == "ufw.log"):
         filePath = file2[2]
-    elif(file = "access.log"):
+    elif(file == "access.log"):
         filePath = files2[3]
-    elif(file = "error.log"):
+    elif(file == "error.log"):
         filePath = files2[4]
-    elif(file = "proftpd.log"):
+    elif(file == "proftpd.log"):
         filePath = files2[5]
+    else:
+        filePath = "0"
     
     return filePath
         
 
-def insertToLog(file, arr):  
+def insertToLog(file1, arr): 
+    # this needs to be the non file extension 
+    x = 0
     db = c1()
     cursor = db.cursor()
-    state = "INSERT INTO %s(ipAddr) VALUES (%s);"
-    tup = 
-    cursor.execute()
+   
+    while(x != len(arr)):
+        val = arr[x]
+        state = "INSERT INTO %s(ipAddr) VALUES (%s);"
+        tup = (file1,val)
+        cursor.execute()
+        db.commit()
+        x += 1
+    db.close()
