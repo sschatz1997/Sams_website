@@ -134,19 +134,19 @@ def insertToLog(file1, arr):
             cursor.execute(state, tup)
         elif(file1 == "syslog"):
             state = "INSERT INTO syslog(ipAddr) VALUES (%s);"
-            cursor.execute(state, val)
+            cursor.execute(state, tup)
         elif(file1 == "ufw"):
             state = "INSERT INTO ufw(ipAddr) VALUES (%s);"
-            cursor.execute(state, val)
+            cursor.execute(state, tup)
         elif(file1 == "access"):
             state = "INSERT INTO access(ipAddr) VALUES (%s);"
-            cursor.execute(state, val)
+            cursor.execute(state, tup)
         elif(file1 == "error"):
             state = "INSERT INTO error(ipAddr) VALUES (%s);"
-            cursor.execute(state, val)
+            cursor.execute(state, tup)
         elif(file1 == "proftpd"):
             state = "INSERT INTO proftpd(ipAddr) VALUES (%s);"
-            cursor.execute(state, val)
+            cursor.execute(state, tup)
         print("Will be excuted: ", state)
         
         db.commit()
