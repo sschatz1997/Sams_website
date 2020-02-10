@@ -13,7 +13,7 @@ from time import sleep as s
 
 
 def files1():
-	fs = ["auth.log", "syslog","ufw.log","access.log","error.log", "proftpd.log" ]
+	fs = ["auth", "syslog","ufw","access","error", "proftpd" ]
 	return fs
 
 def c1():
@@ -75,17 +75,17 @@ def getBasedOnFile(file):
 def matchfileToExt(file):
     # this does conversion
     file2 = files()
-    if(file == "auth.log"):
+    if(file == "auth"):
         filePath = file2[0]
     elif(file == "syslog"):
         filePath = file2[1]
-    elif(file == "ufw.log"):
+    elif(file == "ufw"):
         filePath = file2[2]
-    elif(file == "access.log"):
+    elif(file == "access"):
         filePath = files2[3]
-    elif(file == "error.log"):
+    elif(file == "error"):
         filePath = files2[4]
-    elif(file == "proftpd.log"):
+    elif(file == "proftpd"):
         filePath = files2[5]
     else:
         filePath = "0"
