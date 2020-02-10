@@ -9,7 +9,7 @@ import numpy as np
 import mysql.connector
 from random import randint
 from time import sleep as s
-from IPcount import getAllIPs, getMultiples, toCSV
+#from IPcount import getAllIPs, getMultiples, toCSV
 
 
 def files():
@@ -126,6 +126,22 @@ def toLogFile(list1,file1):
 		#cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
 		s(0.5)
 		x += 1
+
+def getAllIPs():
+    db = c1()
+    cursor = db.cursor()
+    cursor.execute("SELECT ipAddr FROM fromLogs;")
+    temp1 = cursor.fetchall()
+    x = 0
+    finial = []
+    while(x != len(temp1)):
+        temp2 = str(temp1[x])
+        temp2 = temp2.strip("[(',')]")
+        finial.append(temp2)
+        x += 1
+   
+    db.close()
+    return finial
 
 def insert1(val, file1):
 	db = c1()
