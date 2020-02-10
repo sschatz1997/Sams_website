@@ -8,7 +8,7 @@ import datetime
 import numpy as np
 import mysql.connector
 from random import randint
-from functions import files
+from functions import files, compare
 from time import sleep as s
 
 
@@ -124,34 +124,37 @@ def insertToLog(file1, arr):
     x = 0
     db = c1()
     cursor = db.cursor()
-   
-    while(x != len(arr)):
-        val = str(arr[x])
-        #state = getStatement(file1)
-        tup = (val,)
-        if(file1 == "auth"):
-            state = "INSERT INTO auth(ipAddr) VALUES (%s);"
-            cursor.execute(state, tup)
-        elif(file1 == "syslog"):
-            state = "INSERT INTO syslog(ipAddr) VALUES (%s);"
-            cursor.execute(state, tup)
-        elif(file1 == "ufw"):
-            state = "INSERT INTO ufw(ipAddr) VALUES (%s);"
-            cursor.execute(state, tup)
-        elif(file1 == "access"):
-            state = "INSERT INTO access(ipAddr) VALUES (%s);"
-            cursor.execute(state, tup)
-        elif(file1 == "error"):
-            state = "INSERT INTO error(ipAddr) VALUES (%s);"
-            cursor.execute(state, tup)
-        elif(file1 == "proftpd"):
-            state = "INSERT INTO proftpd(ipAddr) VALUES (%s);"
-            cursor.execute(state, tup)
-        print("Will be excuted: ", state)
-        
-        db.commit()
-        s(1)
-        x += 1
+    l1 = compare(arr)
+    size = len(l1)
+
+    if(size != 0):
+        while(x != len(l1)):
+            val = str(l1[x])
+            #state = getStatement(file1)
+            tup = (val,)
+            if(file1 == "auth"):
+                state = "INSERT INTO auth(ipAddr) VALUES (%s);"
+                cursor.execute(state, tup)
+            elif(file1 == "syslog"):
+                state = "INSERT INTO syslog(ipAddr) VALUES (%s);"
+                cursor.execute(state, tup)
+            elif(file1 == "ufw"):
+                state = "INSERT INTO ufw(ipAddr) VALUES (%s);"
+                cursor.execute(state, tup)
+            elif(file1 == "access"):
+                state = "INSERT INTO access(ipAddr) VALUES (%s);"
+                cursor.execute(state, tup)
+            elif(file1 == "error"):
+                state = "INSERT INTO error(ipAddr) VALUES (%s);"
+                cursor.execute(state, tup)
+            elif(file1 == "proftpd"):
+                state = "INSERT INTO proftpd(ipAddr) VALUES (%s);"
+                cursor.execute(state, tup)
+            print("Will be excuted: ", state)
+            
+            db.commit()
+            s(1)
+            x += 1
     db.close()
 
 def getTotalEnt():
