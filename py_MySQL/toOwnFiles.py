@@ -37,8 +37,8 @@ def logCreator():
     # this needs to be the non file extension
     files = files1()
     x = 0
-	db = c1()
-	cursor = db.cursor()
+    db = c1()
+    cursor = db.cursor()
     while(x != len(files)):
         temp = str(files[x])
         print("Making the %s database." % temp)
