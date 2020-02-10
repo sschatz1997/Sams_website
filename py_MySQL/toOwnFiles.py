@@ -41,6 +41,7 @@ def logCreator():
     cursor = db.cursor()
     while(x != len(files)):
         temp = str(files[x])
+        temp = temp.strip("{[',']}")
         print("Making the %s database." % temp)
         cursor.execute("""CREATE TABLE IF NOT EXISTS %s(
             id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
