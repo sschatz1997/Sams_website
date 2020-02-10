@@ -130,7 +130,8 @@ def insertToLog(file1, arr):
         #state = getStatement(file1)
         if(file1 == "auth"):
             state = "INSERT INTO auth(ipAddr) VALUES (%s);"
-            cursor.execute(state, val)
+            tup = (val,)
+            cursor.execute(state, tup)
         elif(file1 == "syslog"):
             state = "INSERT INTO syslog(ipAddr) VALUES (%s);"
             cursor.execute(state, val)
