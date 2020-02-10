@@ -148,11 +148,86 @@ def getAllIPs():
     db.close()
     return finial
 
+def getLogFile(ip):
+	tempA = []
+	x = 0
+    db = c1()
+    cursor = db.cursor()
+	tup = (ip,)
+	statement = "SELECT logFile FROM fromLogs WHERE ipAddr = %s;"
+	cursor.execute(statement, tup)
+	files = cursor.fetchall()
+	if(len(files) != 1):
+		while(x != len(files)):
+			print("more then one file.")
+			temp1 = str(files[x])
+			temp2 = temp1.strip("[(',')]")
+			tempA.append(temp2)
+			x += 1
+		return tempA, x
+	else:
+		temp1 = str(files[0])
+		temp2 = temp1.strip("[(',')]")
+		return temp1, 0
+
+
+# ipCounter
+#+---------------+-------------+------+-----+-------------------+-------------------+
+#| Field         | Type        | Null | Key | Default           | Extra             |
+#+---------------+-------------+------+-----+-------------------+-------------------+
+#| id            | int         | NO   | PRI | NULL              | auto_increment    |
+#| ipAddr        | varchar(30) | NO   |     | NULL              |                   |
+#| occr          | int         | NO   |     | NULL              |                   |
+#| timeSubmitted | timestamp   | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+#| timeUpdated   | timestamp   | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+#| logFile       | varchar(100)| NO   |     | NULL              |                   |
+#+---------------+-------------+------+-----+-------------------+-------------------+
+
+# pass the value after the first run and file type.
+def ipCounter():
+	db = c1()
+	cursor = db.cursor()
+	# FIRST RUN
+	ips = getAllIPs()
+	occr = 1
+	size = len(ips)
+	x = 0
+	
+	while(x != size):
+		t = 0
+		fileCheck = getLogFile(ips[x])
+		filesN = fileCheck[1]
+		fileT = list(fileCheck[0])
+		if(filesN < 0):			
+			while(t != filesN):
+				file1 = fileT.pop()
+				ip = ips[x]
+				occr += filesN
+				insert2(ip,occr,file1)
+				t += 1
+		else:
+			file1 = fileT.pop()
+			ip = ips[x]
+			occr += filesN
+			insert2(ip,occr,file1)
+
+		x += 1
+	
+
 def insert1(val, file1):
 	db = c1()
 	cursor = db.cursor()
 	tup = (file1,val)
 	statement = "INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);"
+	cursor.execute(statement, tup)
+	db.commit()
+	db.close()
+
+def insert2(ip, occur,file1):
+	db = c1()
+	cursor = db.cursor()
+	tup = (ip,occur,file1)
+	statement = "INSERT INTO ipCounter(ipAddr, occr, logFile) VALUES (%s,%s,%s);"
 	cursor.execute(statement, tup)
 	db.commit()
 	db.close()
