@@ -13,7 +13,7 @@ from time import sleep as s
 
 
 def files1():
-	fs = ["auth", "syslog","ufw.log","access.log","error.log", "proftpd.log" ]
+	fs = ["auth.log", "syslog","ufw.log","access.log","error.log", "proftpd.log" ]
 	return fs
 
 def c1():
@@ -44,9 +44,10 @@ def logCreator():
         temp = temp.strip("{[',']}")
         temp = temp.strip('""')
         print("Making the %s database." % temp)
-        state = "CREATE TABLE IF NOT EXISTS %s(id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, ipAddr VARCHAR(30) NOT NULL, timeSubmitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL);" 
-        tup = (temp,)
-        cursor.execute(state, tup)
+        s1 = "CREATE TABLE IF NOT EXISTS " 
+        s3 = " (id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, ipAddr VARCHAR(30) NOT NULL, timeSubmitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL);" 
+        statement = s1 + temp + s3
+        cursor.execute(state)
         db.commit()
         s(1)
         x += 1
