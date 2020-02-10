@@ -12,7 +12,7 @@ while(x1 != len(file1)):
     temp2 = getBasedOnFile(file1[x1])
     TF1 = matchExtToFile(temp2)
     insertToLog(TF1, temp2)
-    x += 1
+    x1 += 1
     
 
 
