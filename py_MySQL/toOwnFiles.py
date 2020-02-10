@@ -41,6 +41,7 @@ def logCreator():
 	cursor = db.cursor()
     while(x != len(files)):
         temp = str(files[x])
+        print("Making the %s database." % temp)
         cursor.execute("""CREATE TABLE IF NOT EXISTS %s(
             id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
             ipAddr VARCHAR(30) NOT NULL,
@@ -48,6 +49,7 @@ def logCreator():
             dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
         );""", (temp,))
         db.commit()
+        s(1)
         x += 1
 	db.close()
 
@@ -55,12 +57,7 @@ def getBasedOnFile(file):
     # this needs to be the full extension
     db = c1()
     cursor = db.cursor()
-    file2 = matchfileToExt(file)
-
-    if(file2 == "0"):
-        file2 = file
-    else:
-        file2 = matchfileToExt(file)
+#    file2 = matchfileToExt(file)
     
     cursor.execute("SELECT ipAddr FROM fromLogs WHERE logFile = %s;", (str(file2)),)
     temp = cursor.fetchall()
@@ -93,7 +90,16 @@ def matchfileToExt(file):
         filePath = "0"
     
     return filePath
-        
+
+def matchExtToFile(file):
+    # this does conversion
+    file2 = files()
+    file3 = files1()
+    while(x != len(file3)):
+        if(file = file3[x]):
+            return file2[x]
+    return "0"
+
 
 def insertToLog(file1, arr): 
     # this needs to be the non file extension 
@@ -105,7 +111,9 @@ def insertToLog(file1, arr):
         val = str(arr[x])
         state = "INSERT INTO %s(ipAddr) VALUES (%s);"
         tup = (file1,val)
-        cursor.execute(state, tup)
-        db.commit()
+        tup2 = (state, file1, val)
+        print("Will be excuted: ", tup)
+        #cursor.execute(state, tup)
+        #db.commit()
         x += 1
-    db.close()
+    #db.close()
