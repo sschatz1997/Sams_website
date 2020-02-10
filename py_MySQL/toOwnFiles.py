@@ -60,7 +60,7 @@ def getBasedOnFile(file):
     cursor = db.cursor()
 #    file2 = matchfileToExt(file)
     
-    cursor.execute("SELECT ipAddr FROM fromLogs WHERE logFile = %s;", (str(file)),)
+    cursor.execute("SELECT ipAddr FROM fromLogs WHERE logFile = %s;", (file,))
     temp = cursor.fetchall()
     db.close()
     x = 0
