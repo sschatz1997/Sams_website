@@ -13,7 +13,7 @@ from time import sleep as s
 
 
 def files1():
-	fs = ["auth.log", "syslog","ufw.log","access.log","error.log", "proftpd.log" ]
+	fs = ["auth", "syslog","ufw.log","access.log","error.log", "proftpd.log" ]
 	return fs
 
 def c1():
