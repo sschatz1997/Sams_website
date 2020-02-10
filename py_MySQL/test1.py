@@ -1,5 +1,6 @@
 from time import sleep as s
 from functions import files, getLinesFromFile, getIPs, nmapScan, toLogFile
+from move import insertIntoOtherDB
 
 files = files()
 x = 0
