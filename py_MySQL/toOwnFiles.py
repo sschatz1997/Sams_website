@@ -105,19 +105,19 @@ def matchExtToFile(file):
 
 def getStatement(file):
     if(file == "auth"):
-        st = "INSERT INTO auth(ipAddr) VALUES (%s);"
+        state = "INSERT INTO auth(ipAddr) VALUES (%s);"
     elif(file == "syslog"):
-        st = "INSERT INTO syslog(ipAddr) VALUES (%s);"  
+        state = "INSERT INTO syslog(ipAddr) VALUES (%s);"  
     elif(file == "ufw"):
-        st = "INSERT INTO ufw(ipAddr) VALUES (%s);"
+        state = "INSERT INTO ufw(ipAddr) VALUES (%s);"
     elif(file == "access"):
-        st = "INSERT INTO access(ipAddr) VALUES (%s);"
+        state = "INSERT INTO access(ipAddr) VALUES (%s);"
     elif(file == "error"):
-        st = "INSERT INTO error(ipAddr) VALUES (%s);"
+        state = "INSERT INTO error(ipAddr) VALUES (%s);"
     elif(file == "proftpd"):
-        st = "INSERT INTO proftpd(ipAddr) VALUES (%s);"
+        state = "INSERT INTO proftpd(ipAddr) VALUES (%s);"
 
-    return st
+    return state
 
 def insertToLog(file1, arr): 
     # this needs to be the non file extension 
@@ -127,9 +127,27 @@ def insertToLog(file1, arr):
    
     while(x != len(arr)):
         val = str(arr[x])
-        state = getStatement(file1)
+        #state = getStatement(file1)
+        if(file1 == "auth"):
+            state = "INSERT INTO auth(ipAddr) VALUES (%s);"
+            cursor.execute(state, val)
+        elif(file1 == "syslog"):
+            state = "INSERT INTO syslog(ipAddr) VALUES (%s);"
+            cursor.execute(state, val)
+        elif(file1 == "ufw"):
+            state = "INSERT INTO ufw(ipAddr) VALUES (%s);"
+            cursor.execute(state, val)
+        elif(file1 == "access"):
+            state = "INSERT INTO access(ipAddr) VALUES (%s);"
+            cursor.execute(state, val)
+        elif(file1 == "error"):
+            state = "INSERT INTO error(ipAddr) VALUES (%s);"
+            cursor.execute(state, val)
+        elif(file1 == "proftpd"):
+            state = "INSERT INTO proftpd(ipAddr) VALUES (%s);"
+            cursor.execute(state, val)
         print("Will be excuted: ", state)
-        cursor.execute(state, val)
+        
         db.commit()
         s(1)
         x += 1
