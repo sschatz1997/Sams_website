@@ -211,7 +211,7 @@ def ipCounter():
 			occr = size
 		while(t != size2):
 			file1 = fileCheck.pop()
-			insert2(ips,occr,file1)
+			insert2(ips[x],occr,file1)
 			t += 1
 		x += 1
 	
