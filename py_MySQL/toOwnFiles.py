@@ -128,9 +128,9 @@ def insertToLog(file1, arr):
     while(x != len(arr)):
         val = str(arr[x])
         #state = getStatement(file1)
+        tup = (val,)
         if(file1 == "auth"):
             state = "INSERT INTO auth(ipAddr) VALUES (%s);"
-            tup = (val,)
             cursor.execute(state, tup)
         elif(file1 == "syslog"):
             state = "INSERT INTO syslog(ipAddr) VALUES (%s);"
