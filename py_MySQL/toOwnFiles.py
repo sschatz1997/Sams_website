@@ -116,7 +116,8 @@ def insertToLog(file1, arr):
         tup = (file1,val)
         tup2 = (state, file1, val)
         print("Will be excuted: ", tup)
-        #cursor.execute(state, tup)
-        #db.commit()
+        cursor.execute(state, tup)
+        db.commit()
+        s(1)
         x += 1
-    #db.close()
+    db.close()
