@@ -128,7 +128,7 @@ def insertToLog(file1, arr):
     while(x != len(arr)):
         val = str(arr[x])
         state = getStatement(file1)
-        print("Will be excuted: ", tup)
+        print("Will be excuted: ", state)
         cursor.execute(state, val)
         db.commit()
         s(1)
