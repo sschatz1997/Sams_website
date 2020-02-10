@@ -31,7 +31,7 @@ def matchExtToFile(file):
     file2 = files()
     file3 = files1()
     while(x != len(file3)):
-        if(file == file3[x]):
-            return file2[x]
+        if(file == file2[x]):
+            return file3[x]
         x += 1
     return "0"
