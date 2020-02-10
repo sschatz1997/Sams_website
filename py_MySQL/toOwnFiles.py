@@ -154,6 +154,22 @@ def insertToLog(file1, arr):
         x += 1
     db.close()
 
+def getTotalEnt():
+    entries = 0
+    temp = returnAuthLog()
+    entries += len(temp)
+    temp = returnSysLog()
+    entries += len(temp)
+    temp = returnUfwLog()
+    entries += len(temp)
+    temp = returnAccessLog()
+    entries += len(temp)
+    temp = returnErrorLog()
+    entries += len(temp)
+    temp = returnProftpdLog()
+    entries += len(temp)
+    return entries
+
 def returnAuthLog():
     db = c1()
     cursor = db.cursor()
@@ -168,3 +184,84 @@ def returnAuthLog():
         finial.append(temp2)
         x += 1
 
+    return finial
+
+def returnSysLog():
+    db = c1()
+    cursor = db.cursor()
+    cursor.execute("SELECT ipAddr FROM syslog;")
+    temp1 = cursor.fetchall()
+    db.close()
+    x = 0
+    finial = []
+    while(x != len(temp1)):
+        temp2 = str(temp1[x])
+        temp2 = temp2.strip("[(',')]")
+        finial.append(temp2)
+        x += 1
+
+    return finial
+
+def returnUfwLog():
+    db = c1()
+    cursor = db.cursor()
+    cursor.execute("SELECT ipAddr FROM ufw;")
+    temp1 = cursor.fetchall()
+    db.close()
+    x = 0
+    finial = []
+    while(x != len(temp1)):
+        temp2 = str(temp1[x])
+        temp2 = temp2.strip("[(',')]")
+        finial.append(temp2)
+        x += 1
+
+    return finial
+
+def returnAccessLog():
+    db = c1()
+    cursor = db.cursor()
+    cursor.execute("SELECT ipAddr FROM access;")
+    temp1 = cursor.fetchall()
+    db.close()
+    x = 0
+    finial = []
+    while(x != len(temp1)):
+        temp2 = str(temp1[x])
+        temp2 = temp2.strip("[(',')]")
+        finial.append(temp2)
+        x += 1
+
+    return finial
+
+def returnErrorLog():
+    db = c1()
+    cursor = db.cursor()
+    cursor.execute("SELECT ipAddr FROM error;")
+    temp1 = cursor.fetchall()
+    db.close()
+    x = 0
+    finial = []
+    while(x != len(temp1)):
+        temp2 = str(temp1[x])
+        temp2 = temp2.strip("[(',')]")
+        finial.append(temp2)
+        x += 1
+
+    return finial
+
+def returnProftpdLog():
+    db = c1()
+    cursor = db.cursor()
+    cursor.execute("SELECT ipAddr FROM proftpd;")
+    temp1 = cursor.fetchall()
+    db.close()
+    x = 0
+    finial = []
+    while(x != len(temp1)):
+        temp2 = str(temp1[x])
+        temp2 = temp2.strip("[(',')]")
+        finial.append(temp2)
+        x += 1
+
+    return finial
