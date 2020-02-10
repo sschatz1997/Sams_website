@@ -51,7 +51,7 @@ def logCreator():
         db.commit()
         s(1)
         x += 1
-	db.close()
+    db.close()
 
 def getBasedOnFile(file):
     # this needs to be the full extension
@@ -69,7 +69,7 @@ def getBasedOnFile(file):
         temp2 = temp2.strip("[(',')]")
         ipArr.append(temp2)
         x += 1
-   return ipArr
+    return ipArr
 
 def matchfileToExt(file):
     # this does conversion
