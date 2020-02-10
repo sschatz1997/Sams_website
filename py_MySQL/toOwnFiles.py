@@ -153,3 +153,18 @@ def insertToLog(file1, arr):
         s(1)
         x += 1
     db.close()
+
+def returnAuthLog():
+    db = c1()
+    cursor = db.cursor()
+    cursor.execute("SELECT ipAddr FROM auth;")
+    temp1 = cursor.fetchall()
+    db.close()
+    x = 0
+    finial = []
+    while(x != len(temp1)):
+        temp2 = str(temp1[x])
+        temp2 = temp2.strip("[(',')]")
+        finial.append(temp2)
+        x += 1
+
