@@ -47,11 +47,12 @@ def logCreator():
         s1 = "CREATE TABLE IF NOT EXISTS " 
         s3 = " (id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, ipAddr VARCHAR(30) NOT NULL, timeSubmitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL);" 
         state = s1 + temp + s3
-        cursor.execute(state)
-        db.commit()
+        print("\n\n",state,"\n\n")
+        #cursor.execute(state,)
+        #db.commit()
         s(1)
         x += 1
-    db.close()
+    #db.close()
 
 def getBasedOnFile(file):
     # this needs to be the full extension
