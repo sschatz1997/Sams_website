@@ -124,8 +124,8 @@ def toLogFile(list1,file1):
 	if(size != 0):
 		while(x != size):
 			val = str(l1[x])
-			print("val = ", val)
-			#insert1(val,file1)
+			#print("val = ", val)
+			insert1(val,file1)
 			#cursor.execute("INSERT INTO fromLogs(logFile, ipAddr) VALUES (%s,%s);", (file1, temp))
 			s(0.5)
 			x += 1
