@@ -42,13 +42,11 @@ def logCreator():
     while(x != len(files)):
         temp = str(files[x])
         temp = temp.strip("{[',']}")
+        temp = temp.strip('""')
         print("Making the %s database." % temp)
-        cursor.execute("""CREATE TABLE IF NOT EXISTS %s(
-            id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-            ipAddr VARCHAR(30) NOT NULL,
-            timeSubmitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-            dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
-        );""", (temp,))
+        state = "CREATE TABLE IF NOT EXISTS %s(id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, ipAddr VARCHAR(30) NOT NULL, timeSubmitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL);" 
+        tup = (temp,)
+        cursor.execute(state, tup)
         db.commit()
         s(1)
         x += 1
