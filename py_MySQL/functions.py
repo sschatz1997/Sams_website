@@ -267,7 +267,7 @@ def ipcheck():
 	size = len(ip)
 	x = 0
 	while(x != size):
-		status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip))
+		status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip[x]))
 		if status == 0:
 			upAddresses.append(str(ip[x]))
 			log = getLogFile(str(ip[x]))
