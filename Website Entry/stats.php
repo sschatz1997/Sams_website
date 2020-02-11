@@ -21,10 +21,10 @@ $prep3 = $con->prepare('SELECT ipAddr FROM upIps WHERE id = ?;');
 
 $x = 1;
 while($x < $id+1){
-	$prep2->bindParam(1,$id,PDO::PARAM_INT);
+	$prep2->bindParam(1,$x,PDO::PARAM_INT);
 	$prep2->execute();
 	$log = $prep2->fetch(PDO::FETCH_ASSOC);
-	$prep3->bindParam(1,$id,PDO::PARAM_INT);
+	$prep3->bindParam(1,$x,PDO::PARAM_INT);
 	$prep3->execute();
 	$ip = $prep3->fetch(PDO::FETCH_ASSOC);
 
