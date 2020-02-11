@@ -260,13 +260,14 @@ def nmapScan(ip,file1):
 #https://github.com/kyan001/ping3
 #https://stackoverflow.com/questions/2953462/pinging-servers-in-python?noredirect=1&lq=1
 
-def ipcheck():
+def ipcheck(newIPs):
 	upAddresses = []
 	logs = []
 	pss = []
 	up = 0
 	down = 0
-	ip = getAllIPs()
+	#ip = getAllIPs()
+	ip = compare(newIPs)
 	size = len(ip)
 	x = 0
 	while(x != size):
