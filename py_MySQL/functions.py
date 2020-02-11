@@ -263,19 +263,28 @@ def nmapScan(ip,file1):
 def ipcheck():
 	upAddresses = []
 	logs = []
+	up = 0
+	down = 0
 	ip = getAllIPs()
 	size = len(ip)
 	x = 0
 	while(x != size):
-		status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip[x]))
+		temp1 = str(ip.pop())
+		status,result = sp.getstatusoutput("ping -c1 -w2 " + str(temp1))
 		if status == 0:
-			upAddresses.append(str(ip[x]))
-			log = getLogFile(str(ip[x]))
+			upAddresses.append(temp1)
+			log = getLogFile(temp1)
 			log = log.pop()
-			logs.append()
+			logs.append(log)
+			print("System " + temp1 + " is UP !")
+			up += 1
 		else:
-			print("System " + str(ip) + " is DOWN !")
+			print("System " + temp1 + " is DOWN !")
+			down += 1
+
 		x += 1
+	print("There are %s up." % str(up))
+	print("There are %s down."% str(down))
 	insertIP(logs, upAddresses)
 	#return logs, upAddresses
 
@@ -289,10 +298,10 @@ def insertIP(logs, upAddr):
 		ip = upAddr[x]
 		log = logs[x]
 		statement = "INSERT INTO upIps(ipAddr, logFile) VALUES(%s,%s);"
-		tup = (ip,logs,)
-		#cursor.execute(statement,tup)
-		#cursor.commit()
-		print("TUP: ", tup)
+		tup = (ip[x],logs[x],)
+		cursor.execute(statement,tup)
+		db.commit()
+		#print("TUP: ", tup)
 		x += 1
 	db.close()
 
