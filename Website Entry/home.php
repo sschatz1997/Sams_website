@@ -74,7 +74,8 @@ function getIP()
 		<center>welcome</center>
 	</div>
 	</hr>
-	<center><p><strong>
+	<center><?php require_once("stats.php");?>
+	<!--<center><p><strong>
 		WORK IN PROGRESS
 			WORK IN PROGRESS
 				WORK IN PROGRESS
@@ -84,6 +85,6 @@ function getIP()
 				WORK IN PROGRESS
 			WORK IN PROGRESS
 		WORK IN PROGRESS
-	</strong></p></center>
+	</strong></p></center>-->
 </body>
 </html
