@@ -285,20 +285,21 @@ def ipcheck():
 		x += 1
 	print("There are %s up." % str(up))
 	print("There are %s down."% str(down))
-	insertIP(logs, upAddresses)
-	#return logs, upAddresses
+	#insertIP(logs, upAddresses)
+	return logs, upAddresses
 
 def insertIP(logs, upAddr):
 	db = c1()
 	cursor = db.cursor()
 	x = 0
-	size = len(upAddr)
+	size1 = len(upAddr)
+	size2 = len(logs)
 
-	while(x != size):
+	while(x != size1 or x != size2):
 		ip = upAddr[x]
 		log = logs[x]
 		statement = "INSERT INTO upIps(ipAddr, logFile) VALUES(%s,%s);"
-		tup = (ip[x],logs[x],)
+		tup = (ip,log,)
 		cursor.execute(statement,tup)
 		db.commit()
 		#print("TUP: ", tup)
