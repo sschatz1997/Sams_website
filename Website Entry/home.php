@@ -90,9 +90,8 @@ function getIP()
 			<th> log </th>
 			<th> add to nmap queue</th>
 		</tr>
-		<tr>
-			<?php require_once("stats.php");?>
-		</tr>
+		<?php require_once("stats.php");?>
+	</table>
 	<!--<center><p><strong>
 		WORK IN PROGRESS
 			WORK IN PROGRESS
