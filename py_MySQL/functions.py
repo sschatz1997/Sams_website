@@ -1,6 +1,7 @@
 import os
 import re
 import csv
+import psutil
 import random
 import base64
 import sqlite3
@@ -253,3 +254,16 @@ def nmapScan(ip,file1):
 	ending = ".csv"
 	file1 = p1 + str(ip) + ending
 
+# networking:
+
+def testConection():
+	print("oof")
+	#https://github.com/kyan001/ping3
+	#https://stackoverflow.com/questions/2953462/pinging-servers-in-python?noredirect=1&lq=1
+
+def ipcheck(ip):
+    status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip))
+    if status == 0:
+        print("System " + str(ip) + " is UP !")
+    else:
+        print("System " + str(ip) + " is DOWN !")
