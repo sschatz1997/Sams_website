@@ -1,10 +1,13 @@
 <?php
 require_once "config.php";
 $log = "/var/log/proftpd/proftpd.log";
-$prep0 = $con->query('SELECT id FROM fromLogs WHERE logFile = "/var/log/proftpd/proftpd.log";');
+//$prep0 = $con->query('SELECT id FROM fromLogs WHERE logFile = "/var/log/proftpd/proftpd.log";');
+$prep0 = $con->query('SELECT id FROM proftpd ORDER BY id DESC LIMIT 1;');
+
 $prep0->execute();
 $count2 = $prep0->rowCount();
-$prep1 = $con->prepare('SELECT id from fromLogs WHERE logFile = ?;');
+//$prep1 = $con->prepare('SELECT id from fromLogs WHERE logFile = ?;');
+$prep1 = $con->prepare('SELECT id from proftpd ORDER BY id DESC LIMIT 1;');
 $prep1->bindParam(1,$log,PDO::PARAM_STR,100);
 $prep1->execute();
 $entries = $prep1->fetch(PDO::FETCH_BOTH);
@@ -17,8 +20,8 @@ if(is_array($entries)){
 	echo "error";
 }
 
-$prep2 = $con->prepare('SELECT ipAddr from fromLogs WHERE id = ?;');
-$prep3 = $con->prepare('SELECT timeSubmitted from fromLogs WHERE id = ?;');
+$prep2 = $con->prepare('SELECT ipAddr from proftpd WHERE id = ?;');
+$prep3 = $con->prepare('SELECT timeSubmitted from proftd WHERE id = ?;');
 
 /*
 fromLogs
@@ -37,11 +40,11 @@ $masterTime = [];
 //echo "<th>".$tt."<th>";
 $id = intval(array_pop($entries));
 while($x < $count2){
-	$prep2->bindParam(1,$id,PDO::PARAM_INT);
+	$prep2->bindParam(1,$x,PDO::PARAM_INT);
 	$prep2->execute();
 	$ip = $prep2->fetch(PDO::FETCH_ASSOC);
 	//echo "type: " . gettype($ip) . "<br>";
-	$prep3->bindParam(1,$id,PDO::PARAM_INT);
+	$prep3->bindParam(1,$x,PDO::PARAM_INT);
 	$prep3->execute();
 	$ip = array_pop($ip);
 	$date = $prep3->fetch(PDO::FETCH_ASSOC);
