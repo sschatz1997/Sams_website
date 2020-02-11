@@ -59,10 +59,18 @@ def showTables():
 	return c
 
 def getLinesFromFile(file):
-	with open(file) as f:
-		for i, l in enumerate(f):
-			pass 
-		return l 
+	lines = 0
+	with open(file, 'r') as f:
+		for line in f:
+			lines += 1
+		
+	return lines
+
+# this randomly stopped working
+#	with open(file) as f:
+#		for i, l in enumerate(f):
+#			pass 
+#		return l 
 
 def getChangedLogFiles():
 	dirs = ["/var/log/", "/var/log/apache2/", "/var/log/mysqld/", "/var/log/proftpd/" ]
