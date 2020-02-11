@@ -260,40 +260,34 @@ def nmapScan(ip,file1):
 #https://github.com/kyan001/ping3
 #https://stackoverflow.com/questions/2953462/pinging-servers-in-python?noredirect=1&lq=1
 
-def ipcheck(newIPs):
+def ipcheck():
 	upAddresses = []
 	logs = []
 	pss = []
 	up = 0
 	down = 0
-	#ip = getAllIPs()
-	ip = compare(newIPs)
+	ip = getAllIPs()
 	size = len(ip)
 	x = 0
-	while(x != size-1 and size != 0):
-		temp1 = str(ip[x])
+	while(x != size):
+		temp1 = str(ip.pop())
 		status,result = sp.getstatusoutput("ping -c1 -w2 " + str(temp1))
 		if status == 0:
-			temp1 = str(ip[x])
 			upAddresses.append(temp1)
 			log = getLogFile(temp1)
-			log = log[x]
+			log = log.pop()
 			logs.append(log)
 			ps = getPS(log)
 			pss.append(ps)
 			print("System " + temp1 + " is UP !")
 			up += 1
 		else:
-			temp1 = str(ip.pop())
 			print("System " + temp1 + " is DOWN !")
 			down += 1
 
 		x += 1
-	if size == 0:
-		print("nothing to add.")
-	else:
-		print("There are %s up." % str(up))
-		print("There are %s down."% str(down))
+	print("There are %s up." % str(up))
+	print("There are %s down."% str(down))
 	insertIP(logs, upAddresses, pss)
 	#return logs, upAddresses
 
