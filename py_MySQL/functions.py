@@ -261,7 +261,7 @@ def testConection():
 	#https://github.com/kyan001/ping3
 	#https://stackoverflow.com/questions/2953462/pinging-servers-in-python?noredirect=1&lq=1
 
-def ipcheck():
+def ipcheck1():
     upAddresses = []
     logs = []
     status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip))
@@ -277,25 +277,25 @@ def ipcheck():
         else:
             print("System " + str(ip) + " is DOWN !")
         x += 1
+    insert(logs, upAddresses)
+    #return logs, upAddresses
 
-    return logs, upAddresses
+def insertIP(logs, upAddr):
+	db = c1()
+	cursor = db.cursor()
+	x = 0
+	size = len(upAddr)
 
-def insetUP(logs, upAddr):
-    db = c1()
-    cursor = db.cursor()
-    x = 0
-    
-    size = len(upAddr)
-
-    while(x != size):
-        ip = upAddr[x]
-        log = logs[x]
-        statement = "INSERT INTO upIps(ipAddr, logFile) VALUES(%s,%s);"
-        tup = (ip,logs,)
-        cursor.execute(statement,tup)
-        cursor.commit()
-        x += 1
-    db.close()
+	while(x != size):
+		ip = upAddr[x]
+		log = logs[x]
+		statement = "INSERT INTO upIps(ipAddr, logFile) VALUES(%s,%s);"
+		tup = (ip,logs,)
+		#cursor.execute(statement,tup)
+		#cursor.commit()
+		print("TUP: ", tup)
+		x += 1
+	db.close()
 
 
 def addUpAddress():
