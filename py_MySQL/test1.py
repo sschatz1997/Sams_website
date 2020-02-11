@@ -80,7 +80,7 @@ while(x < len(files)):
 	s(1)
 	x += 1
 insertIntoOtherDB()
-ipcheck(masterIPs)
+ipcheck()
 ipCounter()
 #print(files)
 
