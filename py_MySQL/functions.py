@@ -270,25 +270,30 @@ def ipcheck(newIPs):
 	ip = compare(newIPs)
 	size = len(ip)
 	x = 0
-	while(x != size):
-		temp1 = str(ip.pop())
+	while(x != size-1 and size != 0):
+		temp1 = str(ip[x])
 		status,result = sp.getstatusoutput("ping -c1 -w2 " + str(temp1))
 		if status == 0:
+			temp1 = str(ip[x])
 			upAddresses.append(temp1)
 			log = getLogFile(temp1)
-			log = log.pop()
+			log = log[x]
 			logs.append(log)
 			ps = getPS(log)
 			pss.append(ps)
 			print("System " + temp1 + " is UP !")
 			up += 1
 		else:
+			temp1 = str(ip.pop())
 			print("System " + temp1 + " is DOWN !")
 			down += 1
 
 		x += 1
-	print("There are %s up." % str(up))
-	print("There are %s down."% str(down))
+	if size == 0:
+		print("nothing to add.")
+	else:
+		print("There are %s up." % str(up))
+		print("There are %s down."% str(down))
 	insertIP(logs, upAddresses, pss)
 	#return logs, upAddresses
 
