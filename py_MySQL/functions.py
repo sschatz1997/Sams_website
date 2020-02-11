@@ -298,10 +298,10 @@ def insetUP(logs, upAddr):
     db.close()
 
 
-def addUpAddress(ip, lf):
+def addUpAddress():
     db = c1()
     cursor = db.cursor()
-    cursor.execute("""CREATE TABLE IF NOT EXIST upIps(
+    cursor.execute("""CREATE TABLE IF NOT EXISTS upIps(
                 id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
                 ipAddr VARCHAR(30) NOT NULL,
                 logFile VARCHAR(100) NOT NULL,
