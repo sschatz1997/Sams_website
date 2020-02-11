@@ -87,6 +87,7 @@ function getIP()
 	<table>
 		<tr>
 			<th> IP </th>
+			<th> PS </th>
 			<th> log </th>
 			<th> add to nmap queue</th>
 		</tr>
