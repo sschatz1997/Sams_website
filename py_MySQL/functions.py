@@ -276,6 +276,7 @@ def ipcheck():
 			log = getLogFile(temp1)
 			log = log.pop()
 			logs.append(log)
+			ps = getPS(log)
 			print("System " + temp1 + " is UP !")
 			up += 1
 		else:
@@ -285,10 +286,25 @@ def ipcheck():
 		x += 1
 	print("There are %s up." % str(up))
 	print("There are %s down."% str(down))
-	#insertIP(logs, upAddresses)
-	return logs, upAddresses
+	insertIP(logs, upAddresses, ps)
+	#return logs, upAddresses
 
-def insertIP(logs, upAddr):
+def getPS(log):
+	ML = files()
+	if(log == ML[0]):
+		return 1
+	elif(log == ML[1]):
+		return 3
+	elif(log == ML[2]):
+		return 3
+	elif(log == ML[3]):
+		return 2
+	elif(log == ML[4]):
+		return 1
+	elif(log == ML[5]):
+		return 3
+
+def insertIP(logs, upAddr, ps):
 	db = c1()
 	cursor = db.cursor()
 	x = 0
@@ -298,8 +314,8 @@ def insertIP(logs, upAddr):
 	while(x != size1 or x != size2):
 		ip = upAddr[x]
 		log = logs[x]
-		statement = "INSERT INTO upIps(ipAddr, logFile) VALUES(%s,%s);"
-		tup = (ip,log,)
+		statement = "INSERT INTO upIps(ipAddr, logFile, PS) VALUES(%s,%s,%s);"
+		tup = (ip,log,ps,)
 		cursor.execute(statement,tup)
 		db.commit()
 		#print("TUP: ", tup)
