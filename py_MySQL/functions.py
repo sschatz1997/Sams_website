@@ -10,6 +10,7 @@ import numpy as np
 import mysql.connector
 from random import randint
 from time import sleep as s
+import subprocess as sp
 #from IPcount import getAllIPs, getMultiples, toCSV
 
 
@@ -256,29 +257,27 @@ def nmapScan(ip,file1):
 
 # networking:
 
-def testConection():
-	print("oof")
-	#https://github.com/kyan001/ping3
-	#https://stackoverflow.com/questions/2953462/pinging-servers-in-python?noredirect=1&lq=1
+#https://github.com/kyan001/ping3
+#https://stackoverflow.com/questions/2953462/pinging-servers-in-python?noredirect=1&lq=1
 
-def ipcheck1():
-    upAddresses = []
-    logs = []
-    status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip))
-    ip = getAllIPs()
-    size = len(ips)
-    x = 0
-    while(x != size):
-        if status == 0:
-            upAddresses.append(str(ip[x]))
-            log = getLogFile(str(ip[x]))
-            log = log.pop()
-            logs.append()
-        else:
-            print("System " + str(ip) + " is DOWN !")
-        x += 1
-    insert(logs, upAddresses)
-    #return logs, upAddresses
+def ipcheck():
+	upAddresses = []
+	logs = []
+	ip = getAllIPs()
+	size = len(ip)
+	x = 0
+	while(x != size):
+		status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip))
+		if status == 0:
+			upAddresses.append(str(ip[x]))
+			log = getLogFile(str(ip[x]))
+			log = log.pop()
+			logs.append()
+		else:
+			print("System " + str(ip) + " is DOWN !")
+		x += 1
+	insertIP(logs, upAddresses)
+	#return logs, upAddresses
 
 def insertIP(logs, upAddr):
 	db = c1()
