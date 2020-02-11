@@ -28,6 +28,14 @@ function getIP()
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>sams page</title>
 	<hr>
+	<style>
+		tr, th, table{
+			border: 4px solid black;
+			border-collapse: collapse;
+			width: 100%;
+			white-space: nowrap;
+		}
+	</style>
 	<center><h1><strong>sams site</center></h1></center>
 	<link rel="stylesheet" href="landingPage1.css">
 	<link rel="stylesheet" href="dropdown.css">
@@ -74,7 +82,17 @@ function getIP()
 		<center>welcome</center>
 	</div>
 	</hr>
-	<center><?php require_once("stats.php");?>
+	<center><h1>IP's that are up and can be nmaped!<h1></center>
+
+	<table>
+		<tr>
+			<th> IP </th>
+			<th> log </th>
+			<th> add to nmap queue</th>
+		</tr>
+		<tr>
+			<?php require_once("stats.php");?>
+		</tr>
 	<!--<center><p><strong>
 		WORK IN PROGRESS
 			WORK IN PROGRESS
