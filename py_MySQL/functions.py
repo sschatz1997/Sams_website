@@ -61,7 +61,7 @@ def showTables():
 def getLinesFromFile(file):
 	with open(file) as f:
 		for i, l in enumerate(f):
-			pass
+			pass i
 	return i
 
 def getChangedLogFiles():
