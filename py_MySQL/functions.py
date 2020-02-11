@@ -261,9 +261,53 @@ def testConection():
 	#https://github.com/kyan001/ping3
 	#https://stackoverflow.com/questions/2953462/pinging-servers-in-python?noredirect=1&lq=1
 
-def ipcheck(ip):
+def ipcheck():
+    upAddresses = []
+    logs = []
     status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip))
-    if status == 0:
-        print("System " + str(ip) + " is UP !")
-    else:
-        print("System " + str(ip) + " is DOWN !")
+    ip = getAllIPs()
+    size = len(ips)
+    x = 0
+    while(x != size):
+        if status == 0:
+            upAddresses.append(str(ip[x]))
+            log = getLogFile(str(ip[x]))
+            log = log.pop()
+            logs.append()
+        else:
+            print("System " + str(ip) + " is DOWN !")
+        x += 1
+
+    return logs, upAddresses
+
+def insetUP(logs, upAddr):
+    db = c1()
+    cursor = db.cursor()
+    x = 0
+    
+    size = len(upAddr)
+
+    while(x != size):
+        ip = upAddr[x]
+        log = logs[x]
+        statement = "INSERT INTO upIps(ipAddr, logFile) VALUES(%s,%s);"
+        tup = (ip,logs,)
+        cursor.execute(statement,tup)
+        cursor.commit()
+        x += 1
+    db.close()
+
+
+def addUpAddress(ip, lf):
+    db = c1()
+    cursor = db.cursor()
+    cursor.execute("""CREATE TABLE IF NOT EXIST upIps(
+                id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                ipAddr VARCHAR(30) NOT NULL,
+                logFile VARCHAR(100) NOT NULL,
+		timeSubmitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+		dateSubmitted DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL            
+            );""")
+    cursor.commit()
+    db.close()
+    
