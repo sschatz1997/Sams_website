@@ -263,6 +263,7 @@ def nmapScan(ip,file1):
 def ipcheck():
 	upAddresses = []
 	logs = []
+	pss = []
 	up = 0
 	down = 0
 	ip = getAllIPs()
@@ -277,6 +278,7 @@ def ipcheck():
 			log = log.pop()
 			logs.append(log)
 			ps = getPS(log)
+			pss.append(ps)
 			print("System " + temp1 + " is UP !")
 			up += 1
 		else:
@@ -286,7 +288,7 @@ def ipcheck():
 		x += 1
 	print("There are %s up." % str(up))
 	print("There are %s down."% str(down))
-	insertIP(logs, upAddresses, ps)
+	insertIP(logs, upAddresses, pss)
 	#return logs, upAddresses
 
 def getPS(log):
@@ -304,7 +306,7 @@ def getPS(log):
 	elif(log == ML[5]):
 		return 3
 
-def insertIP(logs, upAddr, ps):
+def insertIP(logs, upAddr, pss):
 	db = c1()
 	cursor = db.cursor()
 	x = 0
@@ -314,6 +316,7 @@ def insertIP(logs, upAddr, ps):
 	while(x != size1 or x != size2):
 		ip = upAddr[x]
 		log = logs[x]
+		ps = pss[x]
 		statement = "INSERT INTO upIps(ipAddr, logFile, PS) VALUES(%s,%s,%s);"
 		tup = (ip,log,ps,)
 		cursor.execute(statement,tup)
