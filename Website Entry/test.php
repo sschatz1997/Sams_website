@@ -34,6 +34,8 @@ if(is_bool($attempts)){
 
 /*echo "The type is: " . gettype($attempts) . "\n";
 echo "attempts " . $attempts;    */
-
+/*created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            */
 
 ?>

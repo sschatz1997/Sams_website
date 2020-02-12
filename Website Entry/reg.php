@@ -108,6 +108,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     unset($con);
     setcookie("vistiedCookie",$param_username, time());
 }
+
+/*created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            */
 ?>
  
 <!DOCTYPE html>

@@ -12,5 +12,7 @@ echo "With the type: " . gettype($arg) . "\n";
 echo "With the type: " . gettype($b64) . "\n";
 
 fclose($file);
-
+/*created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            */
 ?>

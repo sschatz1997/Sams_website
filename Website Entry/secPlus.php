@@ -19,6 +19,9 @@ if(isset($_POST["chap"])){
 	$insert->bindParam(3,$def, PDO::PARAM_STR,500);
 	$insert->execute();
 }
+/*created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            */
 ?>
 
 <!DOCTYPE html>

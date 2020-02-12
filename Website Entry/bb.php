@@ -34,6 +34,9 @@ if(isset($_POST["name"])){
 }else{
 	//echo "an error has occured!<br>";
 }
+/*created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            */
 ?>
 
 <!DOCTYPE html>

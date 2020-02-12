@@ -18,3 +18,9 @@ def getIPs():
 	#	print("ip: ", t[x])
 	#	x += 1
 	return t
+
+###########################################
+# created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            #
+###########################################

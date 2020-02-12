@@ -13,3 +13,8 @@ while(x != getID()):
 	id1 -= 1
 	x += 1
 
+###########################################
+# created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            #
+###########################################

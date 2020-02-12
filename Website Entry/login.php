@@ -7,7 +7,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: home.php");
     exit;
 }
- 
+
+/*created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            */
+
 // Include config file
 require_once "config.php";
 //require_once "setIntialStatus.php";
