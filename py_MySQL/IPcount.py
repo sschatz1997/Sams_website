@@ -80,3 +80,9 @@ def toCSV(ips):
         wr = csv.writer(f,delimiter=',')
         wr.writerows(ips)
     f.close()
+
+###########################################
+# created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            #
+###########################################

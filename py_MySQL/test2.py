@@ -35,3 +35,9 @@ def matchExtToFile(file):
             return file3[x]
         x += 1
     return "0"
+
+###########################################
+# created by Samuel Schatz                #
+# github: https://github.com/sschatz1997  #
+# email: sjschatz@captechu.edu            #
+###########################################
