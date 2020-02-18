@@ -1,6 +1,6 @@
 from time import sleep as s
 from functions import ipcheck
-from functions import files, getLinesFromFile, getIPs, nmapScan, toLogFile, ipCounter
+from functions import files, getLinesFromFile, getIPs,  toLogFile, ipCounter
 from move import insertIntoOtherDB
 
 files = files()
